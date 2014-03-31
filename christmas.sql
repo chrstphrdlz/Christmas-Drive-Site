@@ -55,7 +55,7 @@ CREATE TABLE Childeren
     cid INT NOT NULL AUTO_INCREMENT,
     firstName VARCHAR(20),
     lastName VARCHAR(20),
-    dateOfBirth DATE NOT NULL,
+    dateOfBirth DATE NOT NULL, not sure if needed
     primaryGaurdianId INT NOT NULL DEFAULT 1,
     PRIMARY KEY(cid),
     FOREIGN KEY(primaryGaurdianId) REFERENCES PersonOrdering(id) 
@@ -71,6 +71,18 @@ CREATE TABLE ClothingOrders
     coid INT NOT NULL AUTO_INCREMENT,
     orderedById INT,
     orderedForId INT,
+    gender VARCHAR(10);
+    infantOutfitSize VARCHAR(30);
+    infantOutfitSpecial VARCHAR(30);
+    jeansSize VARCHAR(30);
+    jeansSpecial VARCHAR(30);
+    shirtSize VARCHAR(30);
+    shirtSpecial VARCHAR(30);
+    socksSize VARCHAR(30);
+    socksSpecial VARCHAR(30);
+    underwearSize VARCHAR(30);
+    diaperSize VARCHAR(30);
+    uodSpecial VARCHAR(30);
     PRIMARY KEY(coid),
     FOREIGN KEY(orderedById) REFERENCES PersonOrdering(id),
     FOREIGN KEY(orderedForId) REFERENCES Childeren(cid)

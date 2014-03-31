@@ -1,0 +1,744 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="myscript.js"></script>
+        
+        <script type ="text/javascript">
+        
+        function genderSelect()
+		{
+			if(document.getElementById("boy").checked)
+			{
+				document.getElementById("boysOption").style.display ="inline";
+				document.getElementById("girlsOption").style.display ="none";
+				document.getElementById("unnkownOption").style.display ="none";
+			} 
+			else if (document.getElementById("girl").checked)
+			{
+				document.getElementById("girlsOption").style.display ="inline";
+				document.getElementById("unknownOption").style.display ="none";
+				document.getElementById("boysOption").style.display ="none";
+			}
+			else
+			{
+				document.getElementById("unknownOption").style.display ="inline";
+				document.getElementById("girlsOption").style.display ="none";
+				document.getElementById("boysOption").style.display ="none";
+			}
+		}
+		
+		function girlsIOJSelect()
+		{
+			if(document.getElementById("girlsIO").checked)
+			{
+				document.getElementById("girlsIOBigDiv").style.display ="inline";
+				document.getElementById("girlsJASDiv").style.display ="none";
+			} 
+			else
+			{
+				document.getElementById("girlsJASDiv").style.display ="inline";
+				document.getElementById("girlsIOBigDiv").style.display ="none";
+			}
+		}
+		
+		function girlsIOSSelect()
+		{
+			if(document.getElementById("girlsIO1").checked)
+			{
+				document.getElementById("girlsInfantSizeDiv").style.display ="inline";
+				document.getElementById("girlsIOSpecialDiv").style.display ="none";
+			} 
+			else
+			{
+				document.getElementById("girlsIOSpecialDiv").style.display ="inline";
+				document.getElementById("girlsInfantSizeDiv").style.display ="none";
+			}
+		}
+		
+		function girlsJeansSelect()
+		{
+			if(document.getElementById("girlsJeans").checked)
+			{
+				document.getElementById("girlsJeansSizeDiv").style.display ="inline";
+				document.getElementById("girlsJeansSpecialDiv").style.display ="none";
+			} 
+			else
+			{
+				document.getElementById("girlsJeansSpecialDiv").style.display ="inline";
+				document.getElementById("girlsJeansSizeDiv").style.display ="none";
+			}
+		}
+		
+		function girlsShirtSelect()
+		{
+			if(document.getElementById("girlsShirt").checked)
+			{
+				document.getElementById("girlsShirtSizeDiv").style.display ="inline";
+				document.getElementById("girlsShirtSpecialDiv").style.display ="none";
+			} 
+			else
+			{
+				document.getElementById("girlsShirtSpecialDiv").style.display ="inline";
+				document.getElementById("girlsShirtSizeDiv").style.display ="none";
+			}
+		}
+		
+		function girlsSocksSelect()
+		{
+			if(document.getElementById("girlsSocks").checked)
+			{
+				document.getElementById("girlsSocksSizeDiv").style.display ="inline";
+				document.getElementById("girlsSocksSpecialDiv").style.display ="none";
+			} 
+			else
+			{
+				document.getElementById("girlsSocksSpecialDiv").style.display ="inline";
+				document.getElementById("girlsSocksSizeDiv").style.display ="none";
+			}
+		}
+		
+		function girlsUODSelect()
+		{
+			if(document.getElementById("girlsUnderwear").checked)
+			{
+				document.getElementById("girlsUnderwearSizeDiv").style.display ="inline";
+				document.getElementById("girlsDiaperSizeDiv").style.display ="none";
+				document.getElementById("girlsUODSpeiclaDiv").style.display ="none";
+			} 
+			else if (document.getElementById("girlsDiapers").checked)
+			{
+				document.getElementById("girlsUnderwearSizeDiv").style.display ="none";
+				document.getElementById("girlsDiaperSizeDiv").style.display ="inline";
+				document.getElementById("girlsUODSpeiclaDiv").style.display ="none";
+			}
+			else
+			{
+				document.getElementById("girlsUnderwearSizeDiv").style.display ="none";
+				document.getElementById("girlsDiaperSizeDiv").style.display ="none";
+				document.getElementById("girlsUODSpecialDiv").style.display ="inline";
+			}
+			
+		}
+		
+		function boysIOJSelect()
+		{
+			if(document.getElementById("boysIO").checked)
+			{
+				document.getElementById("boysIOBigDiv").style.display ="inline";
+				document.getElementById("boysJASDiv").style.display ="none";
+			} 
+			else
+			{
+				document.getElementById("boysJASDiv").style.display ="inline";
+				document.getElementById("boysIOBigDiv").style.display ="none";
+			}
+		}
+		
+		function boysIOSSelect()
+		{
+			if(document.getElementById("boysIO1").checked)
+			{
+				document.getElementById("boysInfantSizeDiv").style.display ="inline";
+				document.getElementById("boysIOSpecialDiv").style.display ="none";
+			} 
+			else
+			{
+				document.getElementById("boysIOSpecialDiv").style.display ="inline";
+				document.getElementById("boysInfantSizeDiv").style.display ="none";
+			}
+		}
+		
+		function boysJeansSelect()
+		{
+			if(document.getElementById("boysJeans").checked)
+			{
+				document.getElementById("boysJeansSizeDiv").style.display ="inline";
+				document.getElementById("boysJeansSpecialDiv").style.display ="none";
+			} 
+			else
+			{
+				document.getElementById("boysJeansSpecialDiv").style.display ="inline";
+				document.getElementById("boysJeansSizeDiv").style.display ="none";
+			}
+		}
+		
+		function boysShirtSelect()
+		{
+			if(document.getElementById("boysShirt").checked)
+			{
+				document.getElementById("boysShirtSizeDiv").style.display ="inline";
+				document.getElementById("boysShirtSpecialDiv").style.display ="none";
+			} 
+			else
+			{
+				document.getElementById("boysShirtSpecialDiv").style.display ="inline";
+				document.getElementById("boysShirtSizeDiv").style.display ="none";
+			}
+		}
+		
+		function boysSocksSelect()
+		{
+			if(document.getElementById("boysSocks").checked)
+			{
+				document.getElementById("boysSocksSizeDiv").style.display ="inline";
+				document.getElementById("boysSocksSpecialDiv").style.display ="none";
+			} 
+			else
+			{
+				document.getElementById("boysSocksSpecialDiv").style.display ="inline";
+				document.getElementById("boysSocksSizeDiv").style.display ="none";
+			}
+		}
+		
+		function boysUODSelect()
+		{
+			if(document.getElementById("boysUnderwear").checked)
+			{
+				document.getElementById("boysUnderwearSizeDiv").style.display ="inline";
+				document.getElementById("boysDiaperSizeDiv").style.display ="none";
+				document.getElementById("boysUODSpeiclaDiv").style.display ="none";
+			} 
+			else if (document.getElementById("boysDiapers").checked)
+			{
+				document.getElementById("boysUnderwearSizeDiv").style.display ="none";
+				document.getElementById("boysDiaperSizeDiv").style.display ="inline";
+				document.getElementById("boysUODSpeiclaDiv").style.display ="none";
+			}
+			else
+			{
+				document.getElementById("boysUnderwearSizeDiv").style.display ="none";
+				document.getElementById("boysDiaperSizeDiv").style.display ="none";
+				document.getElementById("boysUODSpecialDiv").style.display ="inline";
+			}
+			
+		}
+        
+        </script>
+        <title>Thanksgiving and Christmas Stores Clothing Form</title>
+    </head>
+    
+    <body>
+        <form name="clothingForm" action="clothingFormBE.php" method="POST">
+            <div id="firstNameDiv" name="firstNameDiv">
+            	Head of Household Name*<br>
+                First Name <input type="text" id="firstName" name="firstName" onkeyup="highlightNameBoxIfNotValidated('firstName')"><br>
+            </div>
+            
+            <div id="lastNameDiv" name="lastNameDiv">
+                Last Name <input type="text" id="lastName" name="lastName" onkeyup="highlightNameBoxIfNotValidated('lastName')"><br><br>
+            </div>
+            
+            <div id="parentFirstNameDiv" name="parentFirstNameDiv">
+            	Parent's Name Shopping (if different from head of household)<br>
+                First Name <input type="text" id="parentFirstName" name="parentFirstName" onkeyup="highlightNameBoxIfNotValidated('parentFirstName')"><br>
+            </div>
+            
+            <div id="parentLastNameDiv" name="parentLastNameDiv">
+                Last Name <input type="text" id="parentLastName" name="parentLastName" onkeyup="highlightNameBoxIfNotValidated('parentLastName')"><br><br>
+            </div>
+            
+            <div id="childFirstNameDiv" name="childFirstNameDiv">
+            	Child's Name<br>
+                First Name <input type="text" id="childFirstName" name="childFirstName" onkeyup="highlightNameBoxIfNotValidated('childFirstName')"><br>
+            </div>
+            
+            <div id="childLastNameDiv" name="childLastNameDiv">
+                Last Name <input type="text" id="childLastName" name="childLastName" onkeyup="highlightNameBoxIfNotValidated('childLastName')"><br><br>
+            </div>
+            
+            <div id="childIDDiv" name="childIDDiv">
+            	Child's ID*<br>
+            	<input type="radio" name="childID" value=1>Yes<br>
+                <input type="radio" name="childID" value=2>No<br><br>
+            </div>
+            
+            <div id="sexOfChildDiv" name="sexOfChildDiv">
+            	Sex of Child*<br>
+            	<input id = "boy" type="radio" name="sexOfChild" value="boy" onclick = "javascript:genderSelect();">Boy<br>
+                <input id = "girl" type="radio" name="sexOfChild" value="girl" onclick = "javascript:genderSelect();">Girl<br>
+                <input id = "unknown" type="radio" name="sexOfChild" value="unknown" onclick = "javascript:genderSelect();">Unknown<br><br>
+            </div>
+            
+            <div id="ageDiv">
+                Age*<br>
+                <select id="age" name="age">
+                  <option value=""></option>
+                  <option value=1>1</option>
+                  <option value=2>2</option>
+                  <option value=3>3</option>
+                  <option value=4>4</option>
+                  <option value=5>5</option>
+                  <option value=6>6</option>
+                  <option value=7>7</option>
+                  <option value=8>8</option>
+                  <option value=9>9</option>
+                  <option value=10>10</option>
+                  <option value=11>11</option>
+                  <option value=12>12</option>
+                  <option value=13>newborn</option>
+                </select><br><br>
+            </div>
+            
+            <!-- GIRLS CLOTHING HERE -->
+            
+            <div id="girlsOption" name="girlsOption" style="display:none">
+				<div id="girlsIOJDiv" name="girlsIOJDiv" style="display:inline;">
+					Select Infant Outfit, or Jeans & Shirt - Girl*<br>
+					<input id = "girlsIO" onclick = "girlsIOJSelect()" type="radio" name="girlsIOJ" value=1>Girl's Infant Outfit<br>
+					<input id = "girlsJAS" onclick = "girlsIOJSelect()" type="radio" name="girlsIOJ" value=2>Girl's Jeans & Shirt<br><br>
+				</div>
+				
+				<div id="girlsIOBigDiv" style="display:none">
+					<div id="girlsIODiv" name="girlsIODiv" style="display:inline;">
+						Select Infant Outfit, or Special Request Outfit*<br>
+						<input id = "girlsIO1" onclick = "javascript:girlsIOSSelect();" type="radio" name="girlsIO" value=1>Girl's Infant Outfit<br>
+						<input id = "girlsIOS" onclick = "javascript:girlsIOSSelect();" type="radio" name="girlsIO" value=2>Special Request Girl's Infant Outfit<br><br>
+					</div>
+					
+					<div id="girlsInfantSizeDiv" style="display:none;">
+						Girl's Infant Outfit Size*<br>
+						<select id="girlsInfantSize" name="girlsInfantSize">
+							<option value="" selected="selected"></option>
+							<option value="A01 - Girl's Newborn Outfit" >A01 - Girl's Newborn Outfit</option>
+							<option value="A02 - Girl's Infant Outfit, 3 Months" >A02 - Girl's Infant Outfit, 3 Months</option>
+							<option value="A03 - Girl's Infant Outfit, 6 Months" >A03 - Girl's Infant Outfit, 6 Months</option>
+							<option value="A04 - Girl's Infant Outfit, 9 Months" >A04 -  Girl's Infant Outfit, 9 Months</option>
+							<option value="A05 - Girl's Infant Outfit, 12 Months" >A05 - Girl's Infant Outfit, 12 Months</option>
+							<option value="A06 - Girl's Infant Outfit, 18 Months" >A06 - Girl's Infant Outfit, 18 Months</option>
+							<option value="A07 - Girl's Infant Outfit, 24 Months" >A07 - Girl's Infant Outfit, 24 Months</option>
+							<option value="A08 - Girl's Infant Outfit Declined" >A08 - Girl's  Infant Outfit Declined</option>
+						</select><br><br>
+					</div>
+					
+					<div id= "girlsIOSpecialDiv" name = "girlsIOSpecialDiv" style="display:none;">
+						Girl's Special Request (infant outfit)* <input type="text" id="girlsIOSpecial" name="girlsIOSpecial" onkeyup="highlightNameBoxIfNotValidated('girlsIOSpecial')"><br><br>
+					</div>
+				</div>
+				
+				<div id="girlsJASDiv" style="display:none;">
+					<div id="girlsJeansDiv" name="girlsJeansDiv" style="display:inline;">
+						Select Jeans or Special Request Item - Girl*<br>
+						<input id = "girlsJeans" onclick = "javascript:girlsJeansSelect();" type="radio" name="girlsJeans" value=1>Girl's Jeans<br>
+						<input id = "girlsJeansS" onclick = "javascript:girlsJeansSelect();" type="radio" name="girlsJeans" value=2>Girl's Special Request Item (Jeans)<br><br>
+					</div>
+					
+					<div id="girlsJeansSizeDiv" style="display:none;">
+						Girl's Jeans Size*<br>
+						<select id="girlsJeansSize" name="girlsJeansSize">
+							<option value="" selected="selected"></option>
+							<option value="B01 - Toddler Girl's Jeans, 2T" >B01 - Toddler Girl's  Jeans, 2T</option>
+							<option value="B02 - Toddler Girl's Jeans, 3T" >B02 - Toddler Girl's Jeans, 3T</option>
+							<option value="B03 - Girl's Jeans, Regular 4T/4" >B03 - Girl's Jeans, Regular 4T/4</option>
+							<option value="B04 - Girl's Jeans, Regular 5T/5" >B04 - Girl's Jeans, Regular 5T/5</option>
+							<option value="B07 - Girl's Jeans, Regular 6" >B07 - Girl's Jeans, Regular 6</option>
+							<option value="B09 - Girl's Jeans, Regular 7" >B09 - Girl's  Jeans, Regular 7</option>
+							<option value="B10 - Girl's Jeans, Regular 8" >B10 - Girl's Jeans, Regular 8</option>
+							<option value="B11 - Girl's Jeans, Regular 10" >B11 - Girl's Jeans, Regular 10</option>
+							<option value="B12 - Girl's Jeans, Regular  12" >B12 - Girl's Jeans, Regular  12</option>
+							<option value="B13 - Girl's Jeans, Regular 14" >B13 - Girl's Jeans, Regular 14</option>
+							<option value="B14 - Girl's Jeans, Regular 16" >B14 - Girl's Jeans, Regular 16</option>
+							<option value="B15 - Girl's Jeans, Slim 4" >B15 - Girl's Jeans, Slim 4</option>
+							<option value="B16 - Girl's Jeans, Slim 5" >B16 - Girl's Jeans, Slim 5</option>
+							<option value="B17 - Girl's Jeans, Slim 6" >B17 - Girl's Jeans, Slim 6</option>
+							<option value="B19 - Girl's Jeans, Slim 7" >B19 - Girl's Jeans, Slim 7</option>
+							<option value="B20 - Girl's Jeans, Slim 8" >B20 - Girl's Jeans, Slim 8</option>
+							<option value="B21 - Girl's Jeans, Slim 10" >B21 - Girl's Jeans, Slim 10</option>
+							<option value="B22 - Girl's Jeans, Slim 12" >B22 - Girl's Jeans, Slim 12</option>
+							<option value="B23 - Girl's Jeans, Slim  14" >B23 - Girl's Jeans, Slim  14</option>
+							<option value="B24 - Girl's Jeans Plus 8" >B24 - Girl's Jeans Plus 8</option>
+							<option value="B25 - Girl's Jeans, Plus 10" >B25 - Girl's Jeans, Plus 10</option>
+							<option value="B26 - Girl's Jeans, Plus 12" >B26 - Girl's Jeans, Plus 12</option>
+							<option value="B27 - Girl's Jeans, Plus 14" >B27 - Girl's Jeans, Plus 14</option>
+							<option value="B28 - Girl's Jeans, Plus 16" >B28 - Girl's Jeans, Plus 16</option>
+							<option value="B30 - Girl's Juniors Jeans, Regular 0" >B30 - Girl's Juniors Jeans, Regular 0</option>
+							<option value="B31 - Girl's Juniors Jeans, Regular 1" >B31 - Girl's Juniors Jeans, Regular 1</option>
+							<option value="B32 - Girl's Juniors Jeans, Regular 3" >B32 - Girl's Juniors Jeans, Regular 3</option>
+							<option value="B33 - Girl's Juniors Jeans, Regular 5" >B33 - Girl's Juniors Jeans, Regular 5</option>
+							<option value="B34 - Girls Juniors Jeans, Regular 7" >B34 - Girls Juniors Jeans, Regular 7</option>
+							<option value="B35 - Girl's Juniors Jeans, Regular 9" >B35 - Girl's Juniors Jeans, Regular 9</option>
+							<option value="B36 - Girl's Juniors Jeans, Regular 11" >B36 - Girl's Juniors Jeans, Regular 11</option>
+							<option value="B37 - Girl's Juniors Jeans, Regular 13" >B37 - Girl's Juniors Jeans, Regular 13</option>
+							<option value="B38 - Girl's Juniors Jeans, Regular 15" >B38 - Girl's Juniors Jeans, Regular 15</option>
+							<option value="B39 - Girl's Juniors Jeans, Regular 17" >B39 - Girl's Juniors Jeans, Regular 17</option>
+							<option value="B40 - Girl's Juniors Jeans, Regular 19" >B40 - Girl's Juniors Jeans, Regular 19</option>
+							<option value="B41 - Girl's Jeans Declined" >B41 - Girl's Jeans Declined</option>
+						</select><br><br>
+					</div>
+					
+					<div id= "girlsJeansSpecialDiv" name = "girlsJeansSpecialDiv" style="display:none;">
+						Girl's Special Request (jeans)* <input type="text" id="girlsJeansSpecial" name="girlsJeansSpecial" onkeyup="highlightNameBoxIfNotValidated('girlsJeansSpecial')"><br><br>
+					</div>
+					
+					<div id="girlsShirtDiv" name="girlsShirtDiv" style="display:inline;">
+						Select Shirt or Special Request Items - Girl*<br>
+						<input id = "girlsShirt" onclick = "javascript:girlsShirtSelect();" type="radio" name="girlsShirt" value=1>Girl's Shirt<br>
+						<input id = "girlsShirtS" onclick = "javascript:girlsShirtSelect();" type="radio" name="girlsShirt" value=2>Girl's Special Request Item (shirt)<br><br>
+					</div>
+					
+					<div id="girlsShirtSizeDiv" style="display:none;">
+					   Girl's Shirt Size*<br>
+						<select id="girlsShirtSize" name="girlsShirtSize">
+							<option value="" selected="selected"></option>
+							<option value="C01 -  Toddler Girl's Shirt, 2T" >C01 -  Toddler Girl's Shirt, 2T</option>
+							<option value="C02 -  Toddler Girl's Shirt, 3T" >C02 -  Toddler Girl's Shirt, 3T</option>
+							<option value="C03 -Toddler Girl's Shirt, 4T" >C03 -Toddler Girl's Shirt, 4T</option>
+							<option value="C04 - Toddler Girl's Shirt, 5T" >C04 - Toddler Girl's Shirt, 5T</option>
+							<option value="C05 - Girl's Shirt, XS" >C05 - Girl's Shirt, XS</option>
+							<option value="C06 - Girl's  Shirt, Small" >C06 - Girl's  Shirt, Small</option>
+							<option value="C07 - Girl's Shirt, Medium" >C07 - Girl's Shirt, Medium</option>
+							<option value="C08 - Girl's Shirt, Large" >C08 - Girl's Shirt, Large</option>
+							<option value="C09 - Girl's Shirt, XL" >C09 - Girl's Shirt, XL</option>
+							<option value="C10 - Girl's Juniors Shirt, Small" >C10 - Girl's Juniors Shirt, Small</option>
+							<option value="C11 - Girl's Juniors  Shirt, Medium" >C11 - Girl's Juniors  Shirt, Medium</option>
+							<option value="C12 -  Girl's Juniors  Shirt, Large" >C12 -  Girl's Juniors  Shirt, Large</option>
+							<option value="C13 - Girl's Juniors Shirt, Extra Large" >C13 - Girl's Juniors Shirt, Extra Large</option>
+							<option value="C14 - Women's Shirt, Small" >C14 - Women's Shirt, Small</option>
+							<option value="C15 - Women's Shirt ,Medium" >C15 - Women's Shirt ,Medium</option>
+							<option value="C16 - Women's Shirt, Large" >C16 - Women's Shirt, Large</option>
+							<option value="C17 - Women's Shirt, XL" >C17 - Women's Shirt, XL</option>
+							<option value="C18 - Women's Shirt, XXL" >C18 - Women's Shirt, XXL</option>
+							<option value="C19 -Girl's shirts declined" >C19 -Girl's shirts declined</option>
+						</select><br><br>
+					</div>
+					
+					<div id= "girlsShirtSpecialDiv" name = "girlsShirtSpecialDiv" style="display:none;">
+						Girl's Special Request (shirt)* <input type="text" id="girlsShirtSpecial" name="girlsShirtSpecial" onkeyup="highlightNameBoxIfNotValidated('girlsShirtSpecial')"><br><br>
+					</div>
+				</div>
+				
+				<div id="girlsSocksDiv" name="girlsSocksDiv" style = "display:inline;">
+					Select Socks or Special Request Items - Girl*<br>
+					<input id = "girlsSocks" onclick = "javascript:girlsSocksSelect();" type="radio" name="girlsSocks" value=1>Girl's Socks<br>
+					<input id = "girlsSocksS" onclick = "javascript:girlsSocksSelect();" type="radio" name="girlsSocks" value=2>Girl's Special Request Item (socks)<br><br>
+				</div>
+				
+				<div id="girlsSocksSizeDiv" style="display:none;">
+				   Girl's Socks Size*<br>
+					<select id="girlsSocksSize" name="girlsSocksSize">
+						<option value="" selected="selected"></option>
+						<option value="D01 -  Infant Girl Socks,  6 -12 months" >D01 -  Infant Girl Socks,  6 -12 months</option>
+						<option value="D02 -  Infant Girl Socks, 12- 24 months" >D02 -  Infant Girl Socks, 12- 24 months</option>
+						<option value="D03 - Toddler Girl Socks, 2-3 T" >D03 - Toddler Girl Socks, 2-3 T</option>
+						<option value="D04 - Toddler Girl Socks, 4-5 T" >D04 - Toddler Girl Socks, 4-5 T</option>
+						<option value="D05 - Girl's Socks, Small" >D05 - Girl's Socks, Small</option>
+						<option value="D06 - Girl's Socks, Medium" >D06 - Girl's Socks, Medium</option>
+						<option value="D07 - Girl's Socks, Large" >D07 - Girl's Socks, Large</option>
+						<option value="D08 - Women's Socks, 5-9" >D08 - Women's Socks, 5-9</option>
+						<option value="D09 - Women's Socks, 8-12" >D09 - Women's Socks, 8-12</option>
+						<option value="D10 - girl's socks declined" >D10 - girl's socks declined</option>
+					</select><br><br>
+				</div>
+				
+				<div id= "girlsSocksSpecialDiv" name = "girlsSocksSpecialDiv" style="display:none;">
+					Girl's Special Request (socks)* <input type="text" id="girlsSocksSpecial" name="girlsSocksSpecial" onkeyup="highlightNameBoxIfNotValidated('girlsSocksSpecial')"><br><br>
+				</div>
+				
+				<div id="girlsUODDiv" name="girlsUODDiv" style="display:inline;">
+					Select Underwear/Pull-up or Special Request Items - Girl*<br>
+					<input id = "girlsUnderwear" onclick = "javascript:girlsUODSelect();" type="radio" name="girlsUOD" value=1>Girl's Underwear<br>
+					<input id = "girlsDiapers" onclick = "javascript:girlsUODSelect();" type="radio" name="girlsUOD" value=2>Girl's Diapers and Pullups<br>
+					<input id = "girlsUODS" onclick = "javascript:girlsUODSelect();" type="radio" name="girlsUOD" value=3>Girl's Special Request Item (underwear/diapers)<br><br>
+				</div>
+				
+				<div id="girlsUnderwearSizeDiv" style="display:none;">
+				   Girl's Underwear Size*<br>
+					<select id="girlsUnderwearSize" name ="girlsUnderwearSize">
+						<option value="" selected="selected"></option>
+						<option value="E01 - Toddler Girl's Underwear, 2T/3T" >E01 - Toddler Girl's Underwear, 2T/3T</option>
+						<option value="E02 - Toddler Girl's Underwear, 4T" >E02 - Toddler Girl's Underwear, 4T</option>
+						<option value="E03 -  Girl's Underwear, 4" >E03 -  Girl's Underwear, 4</option>
+						<option value="E04 - Girl's Underwear, 6" >E04 - Girl's Underwear, 6</option>
+						<option value="E05 -  Girl's Underwear, 8" >E05 -  Girl's Underwear, 8</option>
+						<option value="E06 - Girl's Underwear, 10" >E06 - Girl's Underwear, 10</option>
+						<option value="E07 -  Girl's Underwear, 12" >E07 -  Girl's Underwear, 12</option>
+						<option value="E08 - Girl's Underwear, 14" >E08 - Girl's Underwear, 14</option>
+						<option value="E09 - Girl's Underwear, 16" >E09 - Girl's Underwear, 16</option>
+						<option value="E10 - Women's Underwear, 5" >E10 - Women's Underwear, 5</option>
+						<option value="E11 -  Women's Underwear, 6" >E11 -  Women's Underwear, 6</option>
+						<option value="E12 - Women's Underwear, 7" >E12 - Women's Underwear, 7</option>
+						<option value="E13 - Women's Underwear, 8" >E13 - Women's Underwear, 8</option>
+						<option value="E14 - Women's Underwear, 9" >E14 - Women's Underwear, 9</option>
+						<option value="E15 -  Women's Underwear, 10" >E15 -  Women's Underwear, 10</option>
+						<option value="E16 - girl's underwear declined" >E16 - girl's underwear declined</option>
+					</select><br><br>
+				</div>
+				
+				<div id="girlsDiaperSizeDiv" style="display:none;">
+				   Girl's Diaper/Pull-ups Size*<br>
+					<select id="girlsDiaperSize" name ="girlsDiaperSize">
+						<option value="" selected="selected"></option>
+						<option value="F01 - Size 1 diapers,  8-14 lbs" >F01 - Size 1 diapers,  8-14 lbs</option>
+						<option value="F02 - Size 2 diapers, 12-18 lbs" >F02 - Size 2 diapers, 12-18 lbs</option>
+						<option value="F03 - Size 3 diapers,  16-28 lbs" >F03 - Size 3 diapers,  16-28 lbs</option>
+						<option value="F04 - Size 4 diapers, 22-37 lbs" >F04 - Size 4 diapers, 22-37 lbs</option>
+						<option value="F05 - Size 5 diapers,  over 27 lbs" >F05 - Size 5 diapers,  over 27 lbs</option>
+						<option value="F06 - Size 6 diapers,  over 35 lbs" >F06 - Size 6 diapers,  over 35 lbs</option>
+						<option value="F07 - Girl's Large Pull-ups, 32-40 lbs" >F07 - Girl's Large Pull-ups, 32-40 lbs</option>
+						<option value="F08 - Girl's XL Pull-ups,  over 38 lbs" >F08 - Girl's XL Pull-ups,  over 38 lbs</option>
+						<option value="F09 - Girl's diapers declined" >F09 - Girl's diapers declined</option>
+	
+					</select><br><br>
+				</div>
+				
+				<div id= "girlsUODSpecialDiv" name = "girlsUODSpecialDiv" style="display:none;">
+					Girl's Special Request (underwear/diapers)* <input type="text" id="girlsUODSpecial" name="girlsUODSpecial" onkeyup="highlightNameBoxIfNotValidated('UOD')"><br><br>
+				</div>
+            </div>
+            
+            <!-- BOYS CLOTHING HERE -->
+            
+            <div id="boysOption" name="boysOption" style="display:none">
+				<div id="boysIOJDiv" name="boysIOJDiv" style="display:inline;">
+					Select Infant Outfit, or Jeans & Shirt - Boy*<br>
+					<input id = "boysIO" onclick = "boysIOJSelect()" type="radio" name="boysIOJ" value=1>Boy's Infant Outfit<br>
+					<input id = "boysJAS" onclick = "boysIOJSelect()" type="radio" name="boysIOJ" value=2>Boy's Jeans & Shirt<br><br>
+				</div>
+				
+				<div id="boysIOBigDiv" style="display:none">
+					<div id="boysIODiv" name="boysIODiv" style="display:inline;">
+						Select Infant Outfit, or Special Request Outfit*<br>
+						<input id = "boysIO1" onclick = "javascript:boysIOSSelect();" type="radio" name="boysIO" value=1>Boy's Infant Outfit<br>
+						<input id = "boysIOS" onclick = "javascript:boysIOSSelect();" type="radio" name="boysIO" value=2>Special Request Boy's Infant Outfit<br><br>
+					</div>
+					
+					<div id="boysInfantSizeDiv" style="display:none;">
+						Boy's Infant Outfit Size*<br>
+						<select id="boysInfantSize" name="boysInfantSize">
+							<option value="" selected="selected"></option>
+							<option value="G01 - Boy's Infant Outfit, newborn" >G01 - Boy's Infant Outfit, newborn</option>
+							<option value="G02 - Boy's Infant Outfit, 3 Months" >G02 - Boy's Infant Outfit, 3 Months</option>
+							<option value="G03 - Boy's Infant Outfit, 6 Months" >G03 - Boy's Infant Outfit, 6 Months</option>
+							<option value="G04 - Boy's Infant Outfit, 9 Months" >G04 - Boy's Infant Outfit, 9 Months</option>
+							<option value="G05 - Boy's Infant Outfit, 12 Months" >G05 - Boy's Infant Outfit, 12 Months</option>
+							<option value="G06 - Boy's Infant Outfit, 18 Months" >G06 - Boy's Infant Outfit, 18 Months</option>
+							<option value="G07 - Boy's Infant Outfit, 24 Months" >G07 - Boy's Infant Outfit, 24 Months</option>
+							<option value="G08 - infant outfit declined" >G08 - infant outfit declined</option>
+						</select><br><br>
+					</div>
+					
+					<div id= "boysIOSpecialDiv" name = "boysIOSpecialDiv" style="display:none;">
+						Boy's Special Request (infant outfit)* <input type="text" id="boysIOSpecial" name="boysIOSpecial" onkeyup="highlightNameBoxIfNotValidated('boysIOSpecial')"><br><br>
+					</div>
+				</div>
+				
+				<div id="boysJASDiv" style="display:none;">
+					<div id="boysJeansDiv" name="boysJeansDiv" style="display:inline;">
+						Select Jeans or Special Request Item - Boy*<br>
+						<input id = "boysJeans" onclick = "javascript:boysJeansSelect();" type="radio" name="boysJeans" value=1>Boy's Jeans<br>
+						<input id = "boysJeansS" onclick = "javascript:boysJeansSelect();" type="radio" name="boysJeans" value=2>Boy's Special Request Item (Jeans)<br><br>
+					</div>
+					
+					<div id="boysJeansSizeDiv" style="display:none;">
+						Boy's Jeans Size*<br>
+						<select id="boysJeansSize" name="boysJeansSize">
+							<option value="" selected="selected"></option>
+							<option value="H01 - Toddler Boy's Jeans,  2T" >H01 - Toddler Boy's Jeans, 2T</option>
+							<option value="H02 - Toddler Boy's Jeans,   3T" >H02 - Toddler Boy's Jeans, 3T</option>
+							<option value="H03 - Toddler Boy's Jeans,   4T\4" >H03 - Toddler Boy's Jeans, 4T\4</option>
+							<option value="H04 - Toddler Boy's Jeans,  5T\5" >H04 - Toddler Boy's Jeans, 5T\5</option>
+							<option value="H07 - Boy's Jeans,  Regular 6" >H07 - Boy's Jeans, Regular 6</option>
+							<option value="H08 - Boy's Jeans,  Regular 7" >H08 - Boy's Jeans, Regular 7</option>
+							<option value="H09 - Boy's Regular Jeans, 8" >H09 - Boy's Jeans, Regular 8</option>
+							<option value="H10 - Boy's Jeans, Regular 10" >H10 - Boy's Jeans, Regular 10</option>
+							<option value="H11 - Boy's Jeans, Regular 12" >H11 - Boy's Jeans, Regular 12</option>
+							<option value="H12 - Boy's Jeans, Regular 14" >H12 - Boy's Jeans, Regular 14</option>
+							<option value="H13 - Boy's Jeans, Regular 16" >H13 - Boy's Jeans, Regular 16</option>
+							<option value="H14 - Boy's Jeans, Regular 18" >H14 - Boy's Jeans, Regular 18</option>
+							<option value="H15 - Boy's Jeans, Slim 4" >H15 - Boy's Jeans, Slim 4</option>
+							<option value="H16 - Boy's Jeans, Slim 5" >H16 - Boy's Jeans, Slim 5</option>
+							<option value="H17 - Boy's Jeans,  Slim 6" >H17 - Boy's Jeans, Slim 6</option>
+							<option value="H18 - Boy's Jeans,  Slim 7" >H18 - Boy's Jeans, Slim 7</option>
+							<option value="H19 - Boy's Jeans, Slim 8" >H19 - Boy's Jeans, Slim 8</option>
+							<option value="H20 - Boy's Jeans, Slim 10" >H20 - Boy's Jeans, Slim 10</option>
+							<option value="H21 - Boy's Jeans, Slim 12" >H21 - Boy's Jeans, Slim 12</option>
+							<option value="H22 - Boy's  Jeans, Slim 14" >H22 - Boy's  Jeans, Slim 14</option>
+							<option value="H23 - Boy's Jeans, Slim 16" >H23 - Boy's Jeans, Slim 16</option>
+							<option value="H24 - Boy's Jeans, Slim 18" >H24 - Boy's Jeans, Slim 18</option>
+							<option value="H25 - Boy's Jeans, Husky 10/28" >H25 - Boy's Jeans, Husky 10/28</option>
+							<option value="H26 - Boy's Jeans, Husky 12/29" >H26 - Boy's Jeans, Husky 12/29</option>
+							<option value="H27 - Boy's Jeans, Husky 14/30" >H27 - Boy's Jeans, Husky 14/30</option>
+							<option value="H28 - Boy's Jeans, Husky 16/31" >H28 - Boy's Jeans, Husky 16/31</option>
+							<option value="H29 - Boy's Jeans, Husky 18/32" >H29 - Boy's Jeans, Husky 18/32</option>
+							<option value="H31 - Boy's jeans declined" >H31 - Boy's jeans declined</option>
+						</select><br><br>
+					</div>
+					
+					<div id= "boysJeansSpecialDiv" name = "boysJeansSpecialDiv" style="display:none;">
+						Boy's Special Request (jeans)* <input type="text" id="boysJeansSpecial" name="boysJeansSpecial" onkeyup="highlightNameBoxIfNotValidated('boysJeansSpecial')"><br><br>
+					</div>
+					
+					<div id="boysShirtDiv" name="boysShirtDiv" style="display:inline;">
+						Select Shirt or Special Request Items - Boy*<br>
+						<input id = "boysShirt" onclick = "javascript:boysShirtSelect();" type="radio" name="boysShirt" value=1>Boy's Shirt<br>
+						<input id = "boysShirtS" onclick = "javascript:boysShirtSelect();" type="radio" name="boysShirt" value=2>Boy's Special Request Item (shirt)<br><br>
+					</div>
+					
+					<div id="boysShirtSizeDiv" style="display:none;">
+					   Boy's Shirt Size*<br>
+						<select id="boysShirtSize" name="boysShirtSize">
+							<option value="" selected="selected"></option>
+							<option value="J01 - Toddler Boy's Shirts, 2T" >J01 - Toddler Boy's Shirts, 2T</option>
+							<option value="J02 - Toddler Boy's Shirts,  3T" >J02 - Toddler Boy's Shirts,  3T</option>
+							<option value="J03 - Toddler Boy's Shirts,  4T" >J03 - Toddler Boy's Shirts,  4T</option>
+							<option value="J04 - Toddler Boy's Shirts,  5T" >J04 - Toddler Boy's Shirts,  5T</option>
+							<option value="J05 - Boy's Shirts, XS" >J05 - Boy's Shirts, XS</option>
+							<option value="J06 - Boy's Shirts, Small" >J06 - Boy's Shirts, Small</option>
+							<option value="J07 - Boy's Shirts, Medium" >J07 - Boy's Shirts, Medium</option>
+							<option value="J08 - Boy's Shirts, Large" >J08 - Boy's Shirts, Large</option>
+							<option value="J09 - Boy's Shirts, XL" >J09 - Boy's Shirts, XL</option>
+							<option value="J10 - Men's Shirts, Small" >J10 - Men's Shirts, Small</option>
+							<option value="J11 - Men's Shirts, Medium" >J11 - Men's Shirts, Medium</option>
+							<option value="J12 - Men's Shirts, Large" >J12 - Men's Shirts, Large</option>
+							<option value="J13 - Men's Shirts, XL" >J13 - Men's Shirts, XL</option>
+							<option value="J14 - Men's Shirts, XXL" >J14 - Men's Shirts, XXL</option>
+							<option value="J15 - Men's Shirts, XXXL" >J15 - Men's Shirts, XXXL</option>
+							<option value="J16 - Boy's shirt declined" >J16 - Boy's shirt declined</option>
+						</select><br><br>
+					</div>
+					
+					<div id= "boysShirtSpecialDiv" name = "boysShirtSpecialDiv" style="display:none;">
+						Boy's Special Request (shirt)* <input type="text" id="boysShirtSpecial" name="boysShirtSpecial" onkeyup="highlightNameBoxIfNotValidated('boysShirtSpecial')"><br><br>
+					</div>
+				</div>
+				
+				<div id="boysSocksDiv" name="boysSocksDiv" style = "display:inline;">
+					Select Socks or Special Request Items - Boy*<br>
+					<input id = "boysSocks" onclick = "javascript:boysSocksSelect();" type="radio" name="boysSocks" value=1>Boy's Socks<br>
+					<input id = "boysSocksS" onclick = "javascript:boysSocksSelect();" type="radio" name="boysSocks" value=2>Boy's Special Request Item (socks)<br><br>
+				</div>
+				
+				<div id="boysSocksSizeDiv" style="display:none;">
+				   Boy's Socks Size*<br>
+					<select id="boysSocksSize" name="boysSocksSize">
+						<option value="" selected="selected"></option>
+						<option value="K01 -  Infant Boy Socks, 6-12 months" >K01 -  Infant Boy Socks, 6 -12 months</option>
+						<option value="K02 - Infant Boy Socks, 12-24 months" >K02 - Infant Boy Socks, 12- 24 months</option>
+						<option value="K03 - Toddler Boy Socks, 2-3 T" >K03 - Toddler Boy Socks, 2-3 T</option>
+						<option value="K04 - Toddler Boy Socks, 4-5 T" >K04 - Toddler Boy Socks, 4-5 T</option>
+						<option value="K05 - Boy's Socks, Small" >K05 - Boy's Socks, Small</option>
+						<option value="K06 - Boy's Socks, Medium" >K06 - Boy's Socks, Medium</option>
+						<option value="K07 - Boy's Socks, Large" >K07 - Boy's Socks, Large</option>
+						<option value="K08 - Men's Socks, 6-12" >K08 - Men's Socks, 6-12</option>
+						<option value="K09 - Men's Socks, 10-13" >K09 - Men's Socks, 10-13</option>
+						<option value="K10 -  boy's socks declined" >K10 -  boy's socks declined</option>
+					</select><br><br>
+				</div>
+				
+				<div id= "boysSocksSpecialDiv" name = "boysSocksSpecialDiv" style="display:none;">
+					Boy's Special Request (socks)* <input type="text" id="boysSocksSpecial" name="boysSocksSpecial" onkeyup="highlightNameBoxIfNotValidated('boysSocksSpecial')"><br><br>
+				</div>
+				
+				<div id="boysUODDiv" name="boysUODDiv" style="display:inline;">
+					Select Underwear/Pull-up or Special Request Items - Boy*<br>
+					<input id = "boysUnderwear" onclick = "javascript:boysUODSelect();" type="radio" name="boysUOD" value=1>Boy's Underwear<br>
+					<input id = "boysDiapers" onclick = "javascript:boysUODSelect();" type="radio" name="boysUOD" value=2>Boy's Diapers and Pullups<br>
+					<input id = "boysUODS" onclick = "javascript:boysUODSelect();" type="radio" name="boysUOD" value=3>Boy's Special Request Item (underwear/diapers)<br><br>
+				</div>
+				
+				<div id="boysUnderwearSizeDiv" style="display:none;">
+				   Boy's Underwear Size*<br>
+					<select id="boysUnderwearSize" name ="boysUnderwearSize">
+						<option value="" selected="selected"></option>
+						<option value="L01 - Toddler Boy's Underwear,  2T/3T" >L01 - Toddler Boy's Underwear,  2T/3T</option>
+						<option value="L02 -  Toddler Boy's Underwear,  4T" >L02 -  Toddler Boy's Underwear,  4T</option>
+						<option value="L04 - Boy's Underwear, Small" >L04 - Boy's Underwear, Small</option>
+						<option value="L05 - Boy's Underwear, Medium" >L05 - Boy's Underwear, Medium</option>
+						<option value="L06 - Boy's Underwear, Large" >L06 - Boy's Underwear, Large</option>
+						<option value="L07 - Boy's Underwear, Extra Large" >L07 - Boy's Underwear,  Extra Large</option>
+						<option value="L08 - Men's Underwear, Small" >L08 - Men's Underwear, Small</option>
+						<option value="L09 - Men's Underwear, Medium" >L09 - Men's Underwear, Medium</option>
+						<option value="L10 - Men's Underwear, Large" >L10 - Men's Underwear, Large</option>
+						<option value="L11 - Men's Underwear, XL" >L11 - Men's Underwear, XL</option>
+						<option value="L12 - Men's Underwear, XXL" >L12 - Men's Underwear, XXL</option>
+						<option value="L13 - Boy's underwear declined" >L13 - Boy's underwear declined</option>
+					</select><br><br>
+				</div>
+				
+				<div id="boysDiaperSizeDiv" style="display:none;">
+				   Boy's Diaper/Pull-ups Size*<br>
+					<select id="boysDiaperSize" name ="boysDiaperSize">
+						<option value="" selected="selected"></option>
+						<option value="F01 - Size 1 diapers, 8-14 lbs" >F01 - Size 1 diapers, 8-14 lbs</option>
+						<option value="F02 - Size 2 diapers, 12-18 lbs" >F02 - Size 2 diapers, 12-18 lbs</option>
+						<option value="F03 - Size 3 diapers, 16-28 lbs" >F03 - Size 3 diapers, 16-28 lbs</option>
+						<option value="F04 - Size 4 diapers, 22-37 lbs" >F04 - Size 4 diapers, 22-37 lbs</option>
+						<option value="F05 - Size 5 diapers, over 27 lbs" >F05 - Size 5 diapers, over 27 lbs</option>
+						<option value="F06 - Size 6 diapers, over 35 lbs" >F06 - Size 6 diapers, over 35 lbs</option>
+						<option value="M07 - Boy's Large Pull-ups, 32-40 lbs" >M07 - Boy's Large Pull-ups, 32-40 lbs</option>
+						<option value="M08 - Boy's XL Pull-ups, over 38 lbs" >M08 - Boy's XL Pull-ups, over 38 lbs</option>
+						<option value="M09 - boy's diapers declined" >M09 - boy's diapers declined</option>
+	
+					</select><br><br>
+				</div>
+				
+				<div id= "boysUODSpecialDiv" name = "boysUODSpecialDiv" style="display:none;">
+					Boy's Special Request (underwear/diapers)* <input type="text" id="boysUODSpecial" name="boysUODSpecial" onkeyup="highlightNameBoxIfNotValidated('UOD')"><br><br>
+				</div>
+            </div>
+            
+            <!-- UNISEX CLOTHING HERE -->
+            
+            <div id = "unknownOption" name = "unknownOption" style="display:none">
+				<div id="unisexIOSizeDiv">
+					Unisex Infant Outfit Size*<br>
+					<select id="unisexIOSize" name="unisexIOSize">
+						<option value="" selected="selected">&nbsp;</option>
+						<option value="N01 - Unisex newborn" >N01 - Unisex newborn</option>
+						<option value="N02 - Unisex 3 Months" >N02 - Unisex 3 Months</option>
+						<option value="N03 - Uisex 6 months" >N03 - Uisex 6 months</option>
+						<option value="N04 - Unisex infant outfit declined" >N04 - Unisex infant outfit declined</option>
+					</select><br><br>
+				</div>
+				
+				<div id="unisexSocksSizeDiv">
+					Unisex Socks Size*<br>
+					<select id="unisexSocksSize" name="unisexSocksSize">
+						<option value="" selected="selected">&nbsp;</option>
+						<option value="P01 - Unisex socks, 6 -12 months" >P01 - Unisex socks, 6 -12 months</option>
+						<option value="P02 - Unisex socks, 12- 24 months" >P02 - Unisex socks, 12- 24 months</option>
+						<option value="P03 - Unisex Socks declined" >P03 - Unisex Socks declined</option>
+					</select><br><br>
+				</div>
+				
+				<div id="unisexDiapersSizeDiv">
+					Unisex Diapers Size*<br>
+					<select id="unisexDiapersSize" name="unisexDiapersSize">
+						<option value="" selected="selected">&nbsp;</option>
+						<option value="F01 - Size 1 diapers, 8-14 lbs" >F01 - Size 1 diapers, 8-14 lbs</option>
+						<option value="F02 - Size 2 diapers, 12-18 lbs" >F02 - Size 2 diapers, 12-18 lbs</option>
+						<option value="F03 - Size 3 diapers, 16-28 lbs" >F03 - Size 3 diapers, 16-28 lbs</option>
+						<option value="Q04 - Unisex diapers declined" >Q04 - Unisex diapers declined</option>
+					</select><br><br>
+				</div>   
+			</div>
+            
+            <div id="otherChildDiv" name="otherChildDiv">
+            	Do you have information for another child?*<br>
+            	<input type="radio" name="otherChild" value=1>Yes<br>
+                <input type="radio" name="otherChild" value=2>No<br><br>
+            </div>
+            
+            <div id="notesDiv" name="notesDiv">
+           		Notes <input type="text" id="notes" name="notes" onkeyup="highlightNameBoxIfNotValidated('notes')"><br><br>
+            </div>
+            
+            <div id="checklistDiv" name="checklistDiv">
+            	<input type="checkbox" name="checklist" value="age">Age of Child<br>
+            	<input type="checkbox" name="checklist" value="io">Infant Outfit OR<br>
+            	<input type="checkbox" name="checklist" value="jeans">Jeans AND<br>
+            	<input type="checkbox" name="checklist" value="shirt">Shirt<br>
+            	<input type="checkbox" name="checklist" value="socks">Socks<br>
+            	<input type="checkbox" name="checklist" value="underwear">Underwear OR<br>
+            	<input type="checkbox" name="checklist" value="diapers">Diapers<br><br>
+            </div>
+            
+            <div id="initialsDiv" name="initialsDiv">
+           		Form Completed By <input type="text" id="initials" name="initials" onkeyup="highlightNameBoxIfNotValidated('initials')"><br><br>
+            </div>
+            
+            <input type="submit">
+            
+        </form>
+    </body>
+</html>

@@ -14,6 +14,10 @@
         private $getColumnMaxStringLength = "SELECT CHARACTER_MAXIMUM_LENGTH FROM INFORMATION_SCHEMA.COLUMNS WHERE (table_name, COLUMN_NAME) = (?, ?)";
         private $addPersonToHousehold = "INSERT INTO peopleInHouse (pid,aid) VALUES (?,?)";
         private $getAllTables = "SHOW TABLES FROM Christmas";
+        
+        // Added clothing order string here
+        private $addClothingOrderString = "INSERT INTO ClothingOrders (gender, infantOutfitSize, infantOutfitSpecial, jeansSize, jeansSpecial, shirtSize, shirtSpecial, socksSize, socksSpecial, underwearSize, diaperSize, uodSpecial) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        
         private $hostname;
         private $mySqlConnection;
         private $preparedStatement;
@@ -107,7 +111,6 @@
         private function makeStatementInsert($statementString, $params)
         {
             $connectingName = 'mysql:host='. $this->hostname . ';dbname=' . $this->dbName;
-            
             try
             {
                 $mySqlConnection = new PDO($connectingName,$this->username,$this->password); 
@@ -231,5 +234,15 @@
         {
             $this->makeStatementInsert($this->addPersonToHousehold, array($person, $address));
         }
+        
+        // Added function here to deal with clothing orders
+        
+        public function addClothingOrder($params)
+        {
+            $returner = $this->makeStatementInsert($this->addClothingOrderString, $params);
+            $this->endStatement();
+            return $returner;
+        }
+        
     }
 ?>
