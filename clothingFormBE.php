@@ -27,7 +27,10 @@
 			$underwearSize = "";
 			$diaperSize = "";
 			$uodSpecial = "";
-
+			$uniIO = "";
+			$uniSocks = "";
+            $uniDiapers = "";
+            
             
             if($gender == "boy")
             {
@@ -140,8 +143,14 @@
 					$uodSpecial = $_POST["girlsUODSpecial"];   
 				}
             }
+            else
+            {
+                $uniIO = $_POST["unisexIOSize"];
+                $uniSocks = $_POST["unisexSocksSize"];
+                $uniDiapers = $_POST["unisexDiapersSize"];
+            }
             
-            $arrayOfValues = array($gender, $infantOutfitSize, $infantOutfitSpecial, $jeansSize, $jeansSpecial, $shirtSize, $shirtSpecial, $socksSize, $socksSpecial, $underwearSize, $diaperSize, $uodSpecial);
+            $arrayOfValues = array($gender, $infantOutfitSize, $infantOutfitSpecial, $jeansSize, $jeansSpecial, $shirtSize, $shirtSpecial, $socksSize, $socksSpecial, $underwearSize, $diaperSize, $uodSpecial, $uniIO, $uniSocks, $uniDiapers);
             
             if(!$dba->addClothingOrder($arrayOfValues))
             {

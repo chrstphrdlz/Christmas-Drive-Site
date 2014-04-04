@@ -67,7 +67,7 @@ CREATE TABLE Children
 );
 
 #Default child name
-INSERT INTO Children (firstName, lastName, dateOfBirth) VALUES ("No", "Name", 0);
+INSERT INTO Children (firstName, lastName, age) VALUES ("No", "Name", 0);
 
 #Need to see if can combine ordered by and ordered for ino primary key
 #Need to add structure to add info
@@ -76,18 +76,21 @@ CREATE TABLE ClothingOrders
     coid INT NOT NULL AUTO_INCREMENT,
     orderedById INT,
     orderedForId INT,
-    gender VARCHAR(10);
-    infantOutfitSize VARCHAR(35);
-    infantOutfitSpecial VARCHAR(35);
-    jeansSize VARCHAR(35);
-    jeansSpecial VARCHAR(35);
-    shirtSize VARCHAR(35);
-    shirtSpecial VARCHAR(35);
-    socksSize VARCHAR(35);
-    socksSpecial VARCHAR(35);
-    underwearSize VARCHAR(35);
-    diaperSize VARCHAR(35);
-    uodSpecial VARCHAR(35);
+    gender VARCHAR(10),
+    infantOutfitSize VARCHAR(35),
+    infantOutfitSpecial VARCHAR(35),
+    jeansSize VARCHAR(35),
+    jeansSpecial VARCHAR(35),
+    shirtSize VARCHAR(35),
+    shirtSpecial VARCHAR(35),
+    socksSize VARCHAR(35),
+    socksSpecial VARCHAR(35),
+    underwearSize VARCHAR(35),
+    diaperSize VARCHAR(35),
+    uodSpecial VARCHAR(35),
+    uniIO VARCHAR(35),
+    uniSocks VARCHAR(35),
+    uniDiapers VARCHAR(35),
     PRIMARY KEY(coid),
     FOREIGN KEY(orderedById) REFERENCES PersonOrdering(id),
     FOREIGN KEY(orderedForId) REFERENCES Children(cid)
