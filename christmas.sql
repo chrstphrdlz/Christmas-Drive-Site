@@ -13,6 +13,7 @@ CREATE TABLE PhoneType
 INSERT INTO PhoneType (description) VALUES("Home");
 INSERT INTO PhoneType (description) VALUES("Cell");
 INSERT INTO PhoneType (description) VALUES("Work");
+INSERT INTO PhoneType (description) VALUES("Other");
 
 CREATE TABLE Language
 (
@@ -39,6 +40,10 @@ CREATE TABLE PersonOrdering
     
     languageId INT NOT NULL DEFAULT 1,
     
+    notes VARCHAR(30) NOT NULL DEFAULT "",
+    
+    #add if we want a food or clothing order
+    
     PRIMARY KEY(id),
     FOREIGN KEY(primaryPhoneId) REFERENCES PhoneType(id),
     FOREIGN KEY(secondaryPhoneId) REFERENCES PhoneType(id),
@@ -50,19 +55,19 @@ INSERT INTO PersonOrdering (firstName, lastName, email) VALUES ("No", "Name", "d
 INSERT INTO PersonOrdering (firstName, lastName, email) VALUES ("Other", "Name", "ff");
 
 #Not sure if primaryGaurdianId should not be added for flexibility by admins, will have today as birthday by default
-CREATE TABLE Childeren
+CREATE TABLE Children
 (
     cid INT NOT NULL AUTO_INCREMENT,
-    firstName VARCHAR(20),
+    firstName VARCHAR(20), 
     lastName VARCHAR(20),
-    dateOfBirth DATE NOT NULL, not sure if needed
+    age INT NOT NULL,
     primaryGaurdianId INT NOT NULL DEFAULT 1,
     PRIMARY KEY(cid),
     FOREIGN KEY(primaryGaurdianId) REFERENCES PersonOrdering(id) 
 );
 
 #Default child name
-INSERT INTO Childeren (firstName, lastName, dateOfBirth) VALUES ("No", "Name", CURDATE());
+INSERT INTO Children (firstName, lastName, dateOfBirth) VALUES ("No", "Name", 0);
 
 #Need to see if can combine ordered by and ordered for ino primary key
 #Need to add structure to add info
@@ -72,30 +77,30 @@ CREATE TABLE ClothingOrders
     orderedById INT,
     orderedForId INT,
     gender VARCHAR(10);
-    infantOutfitSize VARCHAR(30);
-    infantOutfitSpecial VARCHAR(30);
-    jeansSize VARCHAR(30);
-    jeansSpecial VARCHAR(30);
-    shirtSize VARCHAR(30);
-    shirtSpecial VARCHAR(30);
-    socksSize VARCHAR(30);
-    socksSpecial VARCHAR(30);
-    underwearSize VARCHAR(30);
-    diaperSize VARCHAR(30);
-    uodSpecial VARCHAR(30);
+    infantOutfitSize VARCHAR(35);
+    infantOutfitSpecial VARCHAR(35);
+    jeansSize VARCHAR(35);
+    jeansSpecial VARCHAR(35);
+    shirtSize VARCHAR(35);
+    shirtSpecial VARCHAR(35);
+    socksSize VARCHAR(35);
+    socksSpecial VARCHAR(35);
+    underwearSize VARCHAR(35);
+    diaperSize VARCHAR(35);
+    uodSpecial VARCHAR(35);
     PRIMARY KEY(coid),
     FOREIGN KEY(orderedById) REFERENCES PersonOrdering(id),
-    FOREIGN KEY(orderedForId) REFERENCES Childeren(cid)
+    FOREIGN KEY(orderedForId) REFERENCES Children(cid)
 );
 
 #this stores unique addresses with int primary keys for quick linking
 CREATE TABLE Addresses
 (
     aid INT NOT NULL AUTO_INCREMENT,
-    houseNumber VARCHAR(10) NOT NULL,
-    streetName  VARCHAR(30) NOT NULL,
-    city        VARCHAR(20) NOT NULL,
-    zipCode     VARCHAR(12) NOT NULL,
+    houseNumber VARCHAR(30) NOT NULL DEFAULT "",
+    streetName  VARCHAR(30) NOT NULL DEFAULT "",
+    city        VARCHAR(20) NOT NULL DEFAULT "",
+    zipCode     VARCHAR(12) NOT NULL DEFAULT "",
     PRIMARY KEY (aid), 
     CONSTRAINT validAddress UNIQUE (houseNumber, streetName, city, zipCode)
 );
@@ -119,6 +124,8 @@ CREATE TABLE HeadOfHousehold
 (
     hid INT,
     pid INT,
+    #done to allow to keep multiple head of household
+    PRIMARY KEY (hid),
     FOREIGN KEY (hid) REFERENCES Addresses(aid),
     FOREIGN KEY (pid) REFERENCES PersonOrdering(id)
 );

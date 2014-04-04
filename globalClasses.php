@@ -6,7 +6,7 @@
         private $password = "password";
         private $dbName = "Christmas";
         private $nameQueryString = "SELECT * FROM PersonOrdering p WHERE p.lastName LIKE ?";
-        private $addFullPersonString = "INSERT INTO PersonOrdering (firstName, lastName, email, primaryPhoneId, primaryPhoneNum, secondaryPhoneId, secondaryPhoneNum, languageId) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        private $addFullPersonString = "INSERT INTO PersonOrdering (firstName, lastName, email, primaryPhoneId, primaryPhoneNum, secondaryPhoneId, secondaryPhoneNum, languageId, notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         private $addLanguageString = "INSERT INTO Language (languageName) VALUES (?);";
         private $languageQueryString = "SELECT * FROM Language  ORDER BY languageName";
         private $addressAddingString = "INSERT IGNORE INTO Addresses (houseNumber, streetName, city, zipCode) VALUES (?, ?, ?, ?)";
@@ -16,8 +16,11 @@
         private $getAllTables = "SHOW TABLES FROM Christmas";
         
         // Added clothing order string here
+        private $addChildString = "INSERT INTO Children (firstName, lastName, age) VALUES (?,?,?)";
         private $addClothingOrderString = "INSERT INTO ClothingOrders (gender, infantOutfitSize, infantOutfitSpecial, jeansSize, jeansSpecial, shirtSize, shirtSpecial, socksSize, socksSpecial, underwearSize, diaperSize, uodSpecial) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        private $addHeadOfHousehold = "INSERT IGNORE INTO HeadOfHousehold (hid, pid) VALUES (?,?)";
         
+        private $addPhoneType = "INSERT INTO PhoneType (description) VALUES (?)";
         private $hostname;
         private $mySqlConnection;
         private $preparedStatement;
@@ -182,7 +185,8 @@
         
         public function searchForName($nameToSearchFor)
         {
-            $returner = $this->makeStatementSelect($this->nameQueryString, array($nameToSearchFor));
+            $stringMatching = $nameToSearchFor . "%";
+            $returner = $this->makeStatementSelect($this->nameQueryString, array($stringMatching));
             $this->endStatement();
             return $returner;
         } 
@@ -234,7 +238,7 @@
         {
             $this->makeStatementInsert($this->addPersonToHousehold, array($person, $address));
         }
-        
+  
         // Added function here to deal with clothing orders
         
         public function addClothingOrder($params)
@@ -244,5 +248,21 @@
             return $returner;
         }
         
+        public function addChild($params)
+        {
+            $returner = $this->makeStatementInsert($this->addChildString, $params);
+            $this->endStatement();
+            return $returner;
+        }
+        
+        public function addHeadOfHouseHoldIfNotSet($houseId, $personId)
+        {
+            $this->makeStatementInsert($this->addHeadOfHousehold, array($houseId, $personId));
+        }
+        
+        public function addPhoneType($phoneType)
+        {
+            return $this->makeStatementInsert($this->addPhoneType, array($phoneType));
+        }
     }
 ?>

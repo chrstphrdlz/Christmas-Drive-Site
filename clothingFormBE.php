@@ -4,6 +4,17 @@
             require 'globalClasses.php';
             $dba = new databaseAcessor();
             
+            $firstName = $_POST["childFirstName"];
+            $lastName = $_POST["childLastName"];
+            $age = $_POST["age"];
+            
+            $childArray = array($firstName, $lastName, $age);
+            
+            if(!$dba->addChild($childArray))
+            {
+            	echo "Failed to add child";
+            }
+
             $gender = $_POST["sexOfChild"];
             $infantOutfitSize = "";
 			$infantOutfitSpecial = "";
@@ -16,6 +27,7 @@
 			$underwearSize = "";
 			$diaperSize = "";
 			$uodSpecial = "";
+
             
             if($gender == "boy")
             {
@@ -135,6 +147,21 @@
             {
             	echo "Failed to add order";
             }
+            else
+            {
+                if($_POST["otherChild"] == 2)
+                {
+                    echo "success";
+                    echo "value is ";
+                    header("Location: christmasDriveForm.php");
+                }
+                else
+                {
+                    echo "success";
+                    echo "value is ";
+                    header("Location: clothingForm.html");
+                }
+            }
         ?>
-    <body>
+    </body>
 </html>

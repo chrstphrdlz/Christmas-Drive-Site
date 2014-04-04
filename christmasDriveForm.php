@@ -137,11 +137,11 @@ function addTextBoxIfUnselected(item)
 {
     if(item.value == "other")
     {
-        document.getElementById("otherLanguageDiv").style.visibility ="visible";
+        document.getElementById("otherLanguageDiv").style.display ="inline";
     }
     else 
     {
-        document.getElementById("otherLanguageDiv").style.visibility ="hidden";
+        document.getElementById("otherLanguageDiv").style.display ="none";
     }
 }
 
@@ -166,6 +166,29 @@ function chooseOption()
     {
         setAction(formElement, "editInfo.php");
     }
+}
+
+function disselectAddress()
+{
+    var elementOfAddressSelect = document.getElementById("addressSearchContainer");
+    var apartmentInfoDiv = document.getElementById("apartmentAndBuildingNumber");
+    
+    if(document.getElementById("addressType").value == "house")
+	{
+		elementOfAddressSelect.style.display = "inline";
+		apartmentInfoDiv.style.display = "none";
+	} 
+	else if(document.getElementById("addressType").value == "apartment")
+	{
+	    elementOfAddressSelect.style.display = "inline";
+	    apartmentInfoDiv.style.display = "inline";
+	}
+	else
+	{
+	    elementOfAddressSelect.style.display = "none";
+		apartmentInfoDiv.style.display = "none";
+	}
+	
 }
 
 
@@ -254,6 +277,7 @@ function chooseOption()
             <input type="radio" name="primaryPhone" value=2>Cell<br>
             <input type="radio" name="primaryPhone" value=3>Work<br>
             <input type="radio" name="primaryPhone" value=4>Other:<br>
+            <input type="text" id="primaryPhoneType" name="primaryPhoneType"><br>
          </div>
          <!--other description box stuff-->
          <div id="secondaryPhoneNumDiv" name="secondaryPhoneNumDiv">
@@ -267,6 +291,7 @@ function chooseOption()
             <input type="radio" name="secondaryPhone" value=2>Cell<br>
             <input type="radio" name="secondaryPhone" value=3>Work<br>
             <input type="radio" name="secondaryPhone" value=4>Other:<br>
+            <input type="text" id="secondaryPhoneType" name="secondaryPhoneType"><br>
          </div>
          <!--other description box stuff-->
          <!--Number of family members-->
@@ -280,7 +305,10 @@ function chooseOption()
                   $languages = $dba->getLanguages();
                   foreach($languages as $language)
                   {
-                      echo "<option value=";
+                      if($language->languageName == "English")
+                        echo "<option selected='selected' value=";
+                      else
+                        echo "<option value=";
                       echo $language->id;
                       echo ">";
                       echo $language->languageName;
@@ -292,7 +320,7 @@ function chooseOption()
                <option value="other">Other</option>
             </select>
             <br>
-            <div id="otherLanguageDiv" name="otherLanguageDiv" style="height:100px;width:300px;border:1px;visibility:hidden;">
+            <div id="otherLanguageDiv" name="otherLanguageDiv" style="height:100px;width:300px;border:1px;display:none;">
                <input type='text' id='otherLanguage' name='otherLanguage'><br>
             </div>
          </div>
@@ -326,38 +354,55 @@ function chooseOption()
             Notes<br>
             <input type="text" id="notes" name="notes"><br>
          </div>
-         <div id="locationField">
-            <input id="autocomplete" placeholder="Enter your address"
-               onFocus="geoloscate()" type="text"></input>
+         <div id="addressChoiceDiv">
+            Type of Housing:<br>
+            <select id="addressType" name="addressType" onChange="disselectAddress()">
+               <option style="display: none;"></option>
+               <option value="house">House</option>
+               <option value="apartment">Apartment</option>
+            </select>
          </div>
-         <table id="address">
-            <tr>
-               <td class="label" name="address">Street address</td>
-               <td class="slimField"><input class="field" id="street_number" name="street_number"
-                  disabled="true"></input></td>
-               <td class="wideField" colspan="2"><input class="field" id="route" name="route"
-                  disabled="true"></input></td>
-            </tr>
-            <tr>
-               <td class="label">City</td>
-               <td class="wideField" colspan="3"><input class="field" id="locality" name="locality"
-                  disabled="true"></input></td>
-            </tr>
-            <tr>
-               <td class="label">State</td>
-               <td class="slimField"><input class="field"
-                  id="administrative_area_level_1" name="state" disabled="true"></input></td>
-               <td class="label">Zip code</td>
-               <td class="wideField"><input class="field" id="postal_code" name="postal_code"
-                  disabled="true"></input></td>
-            </tr>
-            <tr>
-               <td class="label">Country</td>
-               <td class="wideField" colspan="3"><input class="field"
-                  id="country"  name="country" disabled="true"></input></td>
-            </tr>
-         </table>
-         <input type="button" value="submit" onclick="this.parentNode.submit();">
+         
+         <div id="addressSearchContainer" style="display:none;">
+             <div id="apartmentAndBuildingNumber" style="display:none;">
+             Building:<br>
+                <input type="text" id="buildingNumber" name="buildingNumber"><br>
+             Apartment<br>
+                <input type="text" id="apartmentNumber" name="apartmentNumber"><br>
+             </div>
+             <div id="locationField">
+                <input id="autocomplete" placeholder="Enter your address"
+                   onFocus="geolocate()" type="text"></input>
+             </div>
+             <table id="address">
+                <tr>
+                   <td class="label" name="address">Street address</td>
+                   <td class="slimField"><input class="field" id="street_number" name="street_number"
+                      disabled="true"></input></td>
+                   <td class="wideField" colspan="2"><input class="field" id="route" name="route"
+                      disabled="true"></input></td>
+                </tr>
+                <tr>
+                   <td class="label">City</td>
+                   <td class="wideField" colspan="3"><input class="field" id="locality" name="locality"
+                      disabled="true"></input></td>
+                </tr>
+                <tr>
+                   <td class="label">State</td>
+                   <td class="slimField"><input class="field"
+                      id="administrative_area_level_1" name="state" disabled="true"></input></td>
+                   <td class="label">Zip code</td>
+                   <td class="wideField"><input class="field" id="postal_code" name="postal_code"
+                      disabled="true"></input></td>
+                </tr>
+                <tr>
+                   <td class="label">Country</td>
+                   <td class="wideField" colspan="3"><input class="field"
+                      id="country"  name="country" disabled="true"></input></td>
+                </tr>
+             </table>
+             <input type="button" value="submit" onclick="this.parentNode.parentNode.submit();">
+         </div>
       </form>
    </body>
 </html>
