@@ -354,6 +354,10 @@ function disselectAddress()
             Notes<br>
             <input type="text" id="notes" name="notes"><br>
          </div>
+         
+         Number of Family Members<br>
+         <input type="text" id="numberOfFamilyMembers" name="numberOfFamilyMembers"><br>
+         
          <div id="addressChoiceDiv">
             Type of Housing:<br>
             <select id="addressType" name="addressType" onChange="disselectAddress()">

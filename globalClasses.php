@@ -19,8 +19,15 @@
         private $addChildString = "INSERT INTO Children (firstName, lastName, age) VALUES (?,?,?)";
         private $addClothingOrderString = "INSERT INTO ClothingOrders (gender, infantOutfitSize, infantOutfitSpecial, jeansSize, jeansSpecial, shirtSize, shirtSpecial, socksSize, socksSpecial, underwearSize, diaperSize, uodSpecial, uniIO, uniSocks, uniDiapers) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         private $addHeadOfHousehold = "INSERT IGNORE INTO HeadOfHousehold (hid, pid) VALUES (?,?)";
-        
+        private $addChildString = "INSERT INTO Children (firstName, lastName, age) VALUES (?,?,?)";
+        private $addClothingOrderString = "INSERT INTO ClothingOrders (gender, infantOutfitSize, infantOutfitSpecial, jeansSize, jeansSpecial, shirtSize, shirtSpecial, socksSize, socksSpecial, underwearSize, diaperSize, uodSpecial, uniIO, uniSocks, uniDiapers, notes, checklist, completedBy) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+
         private $addPhoneType = "INSERT INTO PhoneType (description) VALUES (?)";
+        private $addFoodOrder = "INSERT INTO FoodOrder (aid, numPeople, needDelievery) VALUES (?, ?, ?)";
+        private $getAllClothingOrdersInAddress = "SELECT co.coid FROM ClothingOrders co, peopleInHouse pih WHERE co.orderedById = pih.pid AND pih.aid = (?)";
+        private $getNumberOfPeopleInFoodOrder = "SELECT fo.numPeople FROM FoodOrder fo WHERE fo.aid = (?)";
+        private $getClothingOrderForPerson = "SELECT co.coid FROM ClothingOrders co WHERE co.orderedById = (?)";
+        private $getMemberRoleWithUsernameAndPassword = "SELECT role FROM Members WHERE (username, password) = (?, ?)";
         private $hostname;
         private $mySqlConnection;
         private $preparedStatement;
@@ -221,11 +228,27 @@
             return $returner;
         }
         
+        public function addClothingOrder($params)
+        {
+            $returner = $this->makeStatementInsert($this->addClothingOrderString, $params);
+            $this->endStatement();
+            return $returner;
+        }
+        
+        public function addChild($params)
+        {
+            $returner = $this->makeStatementInsert($this->addChildString, $params);
+            $this->endStatement();
+            return $returner;
+        }
+        
+        //does not work when addresses duplicates
         public function addAddress($params)
         {
             print_r($params);
             $returner = $this->makeStatementInsert($this->addressAddingString, $params);
             $this->endStatement();
+            echo "the returner is " . $returner;
             if($returner == 0)
             {
                 $address = $this->getAddresses($params)[0];
@@ -263,6 +286,30 @@
         public function addPhoneType($phoneType)
         {
             return $this->makeStatementInsert($this->addPhoneType, array($phoneType));
+        }
+        
+        public function getClothingOrdersInHouse($addressKey)
+        {
+            return $this->makeStatementSelect($this->getAllClothingOrdersInAddress, array($addressKey));
+        }
+        
+        public function getNumPeopleInFoodOrder($addressKey)
+        {
+            return $this->makeStatementSelect($this->getNumberOfPeopleInFoodOrder, array($addressKey));
+        }
+        
+        public function addFoodOrder($addressKey, $numPeople, $needDelivery)
+        {
+            $this->makeStatementInsert($this->addFoodOrder, array($addressKey, $numPeople, $needDelivery));
+        }
+        public function getClothingOrderForPerson($personId)
+        {
+            return $this->makeStatementSelect($this->getClothingOrderForPerson , array($personId));
+        }
+        
+        public function getUserRole($username, $passwordHash)
+        {
+            return $this->makeStatementSelect($this->getMemberRoleWithUsernameAndPassword, array($username, $passwordHash));
         }
     }
 ?>

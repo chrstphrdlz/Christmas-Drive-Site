@@ -2,13 +2,24 @@
     <body>
         <?php
             require 'globalClasses.php';
-            $dba = new databaseAcessor();
+
+            session_start();
+            echo "Id of ordering person is " . $_SESSION["personOrderingClothesId"] . "<br>";
+			
+			$dba = new databaseAcessor();
             
             $firstName = $_POST["childFirstName"];
             $lastName = $_POST["childLastName"];
             $age = $_POST["age"];
+            $childID = $_POST["childID"];
+            $childIDNo = "";
             
-            $childArray = array($firstName, $lastName, $age);
+            if($childID == "No")
+            {
+                $childIDNo = $_POST["childIDNoS"];
+            }
+            
+            $childArray = array($firstName, $lastName, $age, $childID, $childIDNo);
             
             if(!$dba->addChild($childArray))
             {
@@ -32,7 +43,7 @@
             $uniDiapers = "";
             
             
-            if($gender == "boy")
+            if($gender == "Boy")
             {
                 if($_POST["boysIOJ"] == 1)
                 {
@@ -88,7 +99,7 @@
 				}
                 
             } 
-            else if($gender == "girl")
+            else if($gender == "Girl")
             {
                 if($_POST["girlsIOJ"] == 1)
                 {
@@ -150,7 +161,20 @@
                 $uniDiapers = $_POST["unisexDiapersSize"];
             }
             
-            $arrayOfValues = array($gender, $infantOutfitSize, $infantOutfitSpecial, $jeansSize, $jeansSpecial, $shirtSize, $shirtSpecial, $socksSize, $socksSpecial, $underwearSize, $diaperSize, $uodSpecial, $uniIO, $uniSocks, $uniDiapers);
+            $notes = "";
+            $notes = $_POST["notes"];
+            
+            $checklist = "";
+            foreach($_POST["checklist"] as $checkbox)
+            {
+                $checklist .= " | " . $checkbox;
+            }
+            $checklist .= " |";
+            
+            $initials = "";
+            $initials = $_POST["initials"];
+            
+            $arrayOfValues = array($gender, $infantOutfitSize, $infantOutfitSpecial, $jeansSize, $jeansSpecial, $shirtSize, $shirtSpecial, $socksSize, $socksSpecial, $underwearSize, $diaperSize, $uodSpecial, $uniIO, $uniSocks, $uniDiapers, $notes, $checklist, $initials);
             
             if(!$dba->addClothingOrder($arrayOfValues))
             {
