@@ -86,6 +86,8 @@
             $_SESSION["personId"];
             $_SESSION["addressId"];
                     
+            $errorOnPage = true;        
+            
             if($orderingFood)
             {
                 echo "Food order was selected" . "<br>";
@@ -96,11 +98,14 @@
                     echo "The number of people at this house is currently " . $dba->getNumPeopleInFoodOrder($addressKey) . "<br>";
                     //if no previous food order, insert ignore into food order
                     $numFoodOrdersForAddress = count($dba->getNumPeopleInFoodOrder($addressKey));
+                    
+                    //no error
                     if($numFoodOrdersForAddress==0)
                     {
                         echo "No food order found for this address, adding food order" . "<br>";
                         $dba->addFoodOrder($addressKey, $numPeople, $needDelivery);
                         header("Location: christmasDriveForm.php");
+                        $errorOnPage = false;
                     }
                     else
                     {
@@ -137,6 +142,8 @@
                 }
                 else
                 {
+                    //no error
+                    $errorOnPage = false;
                     echo "Adding clothing order<br>";
                     $_SESSION["personOrderingClothesId"] = $personId;
                     echo "about to send<br>";
@@ -144,7 +151,7 @@
                 }
             }
             
-            if($personId && $languageId && $addressKey)
+            if($personId && $languageId && $addressKey && $errorOnPage)
             {
                 echo "success";
                 echo "value is " . $something;
