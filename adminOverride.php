@@ -1,20 +1,27 @@
 <html>
     <body>
         <?php
+            require 'globalClasses.php';
             $adminUsername = $_POST["userName"];
             $adminPassword = $_POST["password"];
+            $hash = md5($adminPassword);
+            echo $hash;
             
             $dba = new databaseAcessor();
-            $role = $dba->getUserRole($adminUsername, md5($adminPassword));
-            
+            $users = $dba->getUserRole($adminUsername, md5($adminPassword));
+            echo "here";
+            print_r($users);
             $adminLoginValid = false;
-            if(count(role) == 0)
+            
+            if(count($users) == 0)
             {
                 echo "No one found with those credentials";
             }
             else
             {
-                print_r($role);
+                echo "Found a user<br>";
+                $role = $users[0]->role;
+                echo "after<br>";
                 echo $role . "<br>";
                 if($role == "ADMIN")
                 {
@@ -24,7 +31,7 @@
                 }
             }
             
-            if($adminLogin)
+            if($adminLoginValid)
             {
                 session_start();
                 $attemptedOrderType = $_SESSION["attemptedOrderType"];

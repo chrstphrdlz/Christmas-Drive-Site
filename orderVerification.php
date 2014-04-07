@@ -46,7 +46,7 @@
             
          Password:<br>
             <input type="text" id="password" name="password"><br>
-            <input type="button" value="submit" onclick="this.parentNode.parentNode.submit();">
+            <input type="submit" value="Login">
         </form>
         
         

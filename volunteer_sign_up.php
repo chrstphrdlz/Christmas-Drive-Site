@@ -12,16 +12,29 @@
 require_once 'membership.php';		//indicate required files
 $membership = new Membership();				//create new Membership object
 
-
 //Check that user has submitted the form
 if( !empty($_POST) ) {
+    
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $access_code = $_POST["access_code"];
+    
+    //echo "username = " . $username . "<br>";
+    //echo "email = " . $email . "<br>";
+    //echo "access_code = " . $access_code . "<br>";
 
 	//add new user to DB
 	$result = $membership->add_new_user($_POST);
 	
 	if( $result == true ) {
+	    echo "Signed up user sucessfully<br>";
 		//redirect to login page
 		header("location: login.php");
+		
+	}
+	else
+	{
+	    echo "Did not sign up" . "<br>";
 	}
 }
 
