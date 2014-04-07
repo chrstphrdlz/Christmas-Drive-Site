@@ -44,11 +44,13 @@
                     if($errorType == "previouslyMadeClothingOrder")
                     {
                         echo "Adding a food order to this house with a pre-existing clothing order <br>";
+                        header('Location: clothingForm.php');
                     }
                     else
                     {
                         echo "Changing the number of people in this food order<br>";
                         //need to add logic to not allow anything
+                        
                     }
                 
                 }
@@ -57,10 +59,16 @@
                     if($errorType == "previouslyMadeFoodOrder")
                     {
                         echo "Allowing for a food order after a clothing order has been made<br>";
+                        echo $_SESSION["addressKey"] . "<br>";
+                        echo $_SESSION["needDelivery"];
+                        $dba->addChristmasFoodOrder($_SESSION["addressKey"],$_SESSION["needDelivery"]);
+                        //header('Location: christmasDriveForm.php');
                     }
                     else
                     {
                         echo "This should have been impossible to have been to<br>";
+                        echo "type is ". $errorType . "<br>";
+                        print_r($_SESSION);
                     }
                 }
                 else
@@ -68,8 +76,6 @@
                     echo "Nothing to do here";
                 }
                 
-                //cleanup the session stuff and send the user out of here
-                session_destroy(); 
             }
         ?>
     </body>

@@ -793,7 +793,7 @@
             </div>
             
             <div id="initialsDiv" name="initialsDiv">
-           		Form Completed By <input type="text" id="initials" name="initials" onkeyup="javascript:highlightIntialsBoxIfNotValidated('initials');"><br><br>
+           		Form Completed By <input type="text" id="initials" name="initials" onkeyup="javascript:highlightInitialsBoxIfNotValidated('initials');"><br><br>
             </div>
             
             <input type="submit">

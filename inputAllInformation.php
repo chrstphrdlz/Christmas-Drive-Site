@@ -126,14 +126,26 @@
                     if($numFoodOrdersForAddress==0)
                     {
                         echo "No food order found for this address, adding food order" . "<br>";
-                        $dba->addFoodOrder($addressKey, $needDelivery);
-                        //header("Location: christmasDriveForm.php");
+                        $dba->addChristmasFoodOrder($addressKey, $needDelivery);
+                        $_SESSION["addressKey"] = $addressKey;
+                        $_SESSION["needDelivery"] = $needDelivery;
+                        header("Location: christmasDriveForm.php");
+                        echo "done";
                         $errorOnPage = false;
                     }
                     else
                     {
+                        //names not made yet, need to update
                         echo "Food order not added! food order has been made on the address " . $addressKey . "<br>";
+                        print_r($foodOrdersForAddress);
+                        print_r($foodOrdersForAddress);
+                        $foodOrderId = $foodOrdersForAddress->aid;
+                        $numberOfPeopleInFoodOrder = $foodOrdersForAddress[0]->numPeopleInHouse;
+                        
+                        //store variables to allow for updating the number of people int the house
                         $_SESSION["errorType"] = "previouslyMadeFoodOrder";
+                        $_SESSION["foodOrderId"] = $foodOrderId;
+                        $_SESSION["numberOfPeopleInFoodOrder"] = $numberOfPeopleInFoodOrder;
                     }
                 }
                 else
@@ -177,7 +189,7 @@
             if($personId && $languageId && $addressKey && $errorOnPage)
             {
                 echo "success";
-                echo "value is " . $something;
+                echo "value is " . $personKey;
                 header("Location: orderVerification.php");
             }
         ?>
