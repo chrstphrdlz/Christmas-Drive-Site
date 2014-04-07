@@ -4,7 +4,8 @@
             require 'globalClasses.php';
 
             session_start();
-            echo "Id of ordering person is " . $_SESSION["personOrderingClothesId"] . "<br>";
+            $personOrderingID = $_SESSION["personOrderingID"];
+            echo "Id of ordering person is " . $personOrderingID . "<br>";
 			
 			$dba = new databaseAcessor();
             
@@ -19,9 +20,11 @@
                 $childIDNo = $_POST["childIDNoS"];
             }
             
-            $childArray = array($firstName, $lastName, $age, $childID, $childIDNo);
+            $childArray = array($firstName, $lastName, $age, $childID, $childIDNo, $personOrderingID);
             
-            if(!$dba->addChild($childArray))
+            $childOrderingID = $dba->addChild($childArray);
+            
+            if(!$childOrderingID)
             {
             	echo "Failed to add child";
             }
@@ -174,7 +177,7 @@
             $initials = "";
             $initials = $_POST["initials"];
             
-            $arrayOfValues = array($gender, $infantOutfitSize, $infantOutfitSpecial, $jeansSize, $jeansSpecial, $shirtSize, $shirtSpecial, $socksSize, $socksSpecial, $underwearSize, $diaperSize, $uodSpecial, $uniIO, $uniSocks, $uniDiapers, $notes, $checklist, $initials);
+            $arrayOfValues = array($personOrderingID, $childOrderingID, $gender, $infantOutfitSize, $infantOutfitSpecial, $jeansSize, $jeansSpecial, $shirtSize, $shirtSpecial, $socksSize, $socksSpecial, $underwearSize, $diaperSize, $uodSpecial, $uniIO, $uniSocks, $uniDiapers, $notes, $checklist, $initials);
             
             if(!$dba->addClothingOrder($arrayOfValues))
             {
@@ -186,15 +189,15 @@
                 {
                     echo "success";
                     echo "value is ";
-                    header("Location: christmasDriveForm.php");
+                    //header("Location: christmasDriveForm.php");
                 }
                 else
                 {
                     echo "success";
                     echo "value is ";
-                    header("Location: clothingForm.html");
+                    //header("Location: clothingForm.html");
                 }
             }
         ?>
     </body>
-</html>tml>
+</html>

@@ -41,7 +41,6 @@
             }
             
             
-            
             //add person
             $arrayOfValues = array($firstName, $lastName, $email, $primaryPhoneId, $primaryPhoneNum, $secondaryPhoneId, $secondaryPhoneNum, $languageId, $notes);
             if(!$languageId)
@@ -108,9 +107,8 @@
                     if($numFoodOrdersForAddress==0)
                     {
                         echo "No food order found for this address, adding food order" . "<br>";
-                        $dba->addChristmasFoodOrder($addressKey, $needDelivery);
-                        header("Location: christmasDriveForm.php");
-                        echo "done";
+                        $dba->addFoodOrder($addressKey, $needDelivery);
+                        //header("Location: christmasDriveForm.php");
                         $errorOnPage = false;
                     }
                     else

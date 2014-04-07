@@ -2,7 +2,8 @@
 <html>
 	<?php
         session_start();
-        echo $_SESSION["personOrderingClothesId"];
+        $personOrderingID = $_SESSION["personOrderingClothesId"];
+        $_SESSION["personOrderingID"] = $personOrderingID;
     ?>
     
     <head>
