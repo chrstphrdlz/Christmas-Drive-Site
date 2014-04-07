@@ -21,7 +21,7 @@
         private $addChristmasFoodOrderString = "INSERT INTO ChristmasFoodOrder (aid, needDelievery) VALUES (?, ?)";
 		private $addThanksGivingFoodOrderString = "INSERT INTO ThanksgivingFoodOrder (aid, needDelievery) VALUES (?, ?, ?)";
         private $getAllClothingOrdersInAddress = "SELECT co.coid FROM ClothingOrders co, peopleInHouse pih WHERE co.orderedById = pih.pid AND pih.aid = (?)";
-        private $getNumberOfPeopleInFoodOrder = "SELECT ad.numPeopleInHouse FROM Addresses ad WHERE ad.aid = (?)";
+        private $getNumberOfPeopleInFoodOrder = "SELECT ad.numPeopleInHouse FROM Addresses ad, ChristmasFoodOrder fo WHERE fo.aid = (?) AND ad.aid = fo.aid";
         private $getClothingOrderForPerson = "SELECT co.coid FROM ClothingOrders co WHERE co.orderedById = (?)";
         private $getMemberRoleWithUsernameAndPassword = "SELECT role FROM Members WHERE (username, password) = (?, ?)";
         private $hostname;
@@ -286,9 +286,9 @@
             return $this->makeStatementSelect($this->getNumberOfPeopleInFoodOrder, array($addressKey));
         }
         
-        public function addChristmasFoodOrder($addressKey, $numPeople, $needDelivery)
+        public function addChristmasFoodOrder($addressKey, $needDelivery)
         {
-            $this->makeStatementInsert($this->addChristmasFoodOrderString, array($addressKey, $numPeople, $needDelivery));
+            $this->makeStatementInsert($this->addChristmasFoodOrderString, array($addressKey, $needDelivery));
         }
 		
 		public function addThanksgivingFoodOrder($addressKey, $numPeople, $needDelivery)

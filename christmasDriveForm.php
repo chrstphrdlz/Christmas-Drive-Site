@@ -300,7 +300,6 @@ function disselectAddress()
             <select id="languagesSpoken" name="languagesSpoken" onChange="addTextBoxIfUnselected(this)">
                <?php
                   require 'globalClasses.php';
-                  
                   $dba = new databaseAcessor();
                   $languages = $dba->getLanguages();
                   foreach($languages as $language)

@@ -1,12 +1,13 @@
 christmasDriveForm.php
     --have to add more possible info to "other" field for "phone type" : add new type in the phone types table
     validation for other text box
-    making both food and clothing orders require login (if anyone in house made food order, stop, unless it is a combined household)
-        check if anyone in house made clothing order
-        if there is someone who did, say cannot add another
-    add delivery thing
+    --making both food and clothing orders require login (if anyone in house made food order, stop, unless it is a combined household)
+        --check if anyone in house made clothing order
+        --if there is someone who did, say cannot add another
+    
+    --add delivery thing
     add rest of form info
-    add number of family members
+    --add number of family members
     add volunteer feild for the clothing and food order
     
     CHANGE ADDRESS INFO

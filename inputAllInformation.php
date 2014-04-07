@@ -108,8 +108,9 @@
                     if($numFoodOrdersForAddress==0)
                     {
                         echo "No food order found for this address, adding food order" . "<br>";
-                        $dba->addFoodOrder($addressKey, $needDelivery);
-                        //header("Location: christmasDriveForm.php");
+                        $dba->addChristmasFoodOrder($addressKey, $needDelivery);
+                        header("Location: christmasDriveForm.php");
+                        echo "done";
                         $errorOnPage = false;
                     }
                     else
