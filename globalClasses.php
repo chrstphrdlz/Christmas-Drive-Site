@@ -317,7 +317,7 @@
 
 		public function validate_new_user($username, $email, $access_code) 
 		{
-		
+		    include("constants.php");
 			$query_1 = 'SELECT username FROM Members WHERE username = ?';
 			$query_2 = 'SELECT username FROM Members WHERE email = ?';
 			
@@ -327,6 +327,7 @@
 			//check username is unique
 			$result = $this->makeStatementSelect( $query_1, array($username) );
 			if( !empty($result) ) {
+			    echo "That user name already exists.<br>";
 				$errors['username'] = 'That user name already exists.';
 				$found_error = true;
 			}
@@ -334,19 +335,30 @@
 			//check email is unique
 			$result = $this->makeStatementSelect( $query_2, array($email) );
 			if( !empty($result) ) {
+			    echo "This email already has an account.<br>";
 				$errors['email'] =  'This email already has an account.';
 				$found_error = true;
 			}
 			
 			//check access_code is valid
 			if( $access_code != ADMIN_KEY && $access_code != VOL_KEY) {
+			    echo "Invalid access code.<br>";
 				$errors['access_code'] =  'Invalid access code.';
 				$found_error = true;
 			}
 			
-			//if an error was found return the array of errors
+			//if an error was found return false and print the error
 			if($found_error) {
-				return $errors;
+				return false;
+			}
+			else
+			{
+			    echo "No error found<br>";
+			}
+			
+			if($true)
+			{
+			    echo "Works<br>";
 			}
 			
 			//otherwise just return true
