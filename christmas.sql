@@ -62,6 +62,8 @@ CREATE TABLE Children
     cid INT NOT NULL AUTO_INCREMENT,
     firstName VARCHAR(20), 
     lastName VARCHAR(20),
+    parentFirst VARCHAR(20),
+    parentLast VARCHAR(20),
     age INT NOT NULL,
     childID VARCHAR(3),
     childIDNo VARCHAR(30),

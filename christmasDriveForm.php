@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+  <?php
+        session_unset();
+  ?>
   <head>
     <link rel="stylesheet" type="text/css" href="CSS/ChristmasDriveForm.css">
     <title>Place Autocomplete Address Form</title>

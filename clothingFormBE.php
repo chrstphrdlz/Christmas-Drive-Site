@@ -14,13 +14,18 @@
             $age = $_POST["age"];
             $childID = $_POST["childID"];
             $childIDNo = "";
+            $parentFirst = "";
+            $parentLast = "";
+            
+            $parentFirst = $_POST["parentFirstName"];
+            $parentLast = $_POST["parentLastName"];
             
             if($childID == "No")
             {
                 $childIDNo = $_POST["childIDNoS"];
             }
             
-            $childArray = array($firstName, $lastName, $age, $childID, $childIDNo, $personOrderingID);
+            $childArray = array($firstName, $lastName, $parentFirst, $parentLast, $age, $childID, $childIDNo, $personOrderingID);
             
             $childOrderingID = $dba->addChild($childArray);
             
@@ -187,7 +192,6 @@
             {
                 if($_POST["otherChild"] == 2)
                 {
-                    session_destroy();
                     echo "success";
                     echo "value is ";
                     header("Location: christmasDriveForm.php");

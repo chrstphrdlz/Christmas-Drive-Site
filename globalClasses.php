@@ -15,7 +15,7 @@
         private $addPersonToHousehold = "INSERT INTO peopleInHouse (pid,aid) VALUES (?,?)";
         private $getAllTables = "SHOW TABLES FROM Christmas";
         private $addHeadOfHousehold = "INSERT IGNORE INTO HeadOfHousehold (hid, pid) VALUES (?,?)";
-        private $addChildString = "INSERT INTO Children (firstName, lastName, age, childID, childIDNo, primaryGaurdianId) VALUES (?,?,?,?,?,?)";
+        private $addChildString = "INSERT INTO Children (firstName, lastName, parentFirst, parentLast, age, childID, childIDNo, primaryGaurdianId) VALUES (?,?,?,?,?,?,?,?)";
         private $addClothingOrderString = "INSERT INTO ClothingOrders (orderedById, orderedForId, gender, infantOutfitSize, infantOutfitSpecial, jeansSize, jeansSpecial, shirtSize, shirtSpecial, socksSize, socksSpecial, underwearSize, diaperSize, uodSpecial, uniIO, uniSocks, uniDiapers, notes, checklist, completedBy) VALUES (?, ?, ? ,? ,? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         private $addPhoneType = "INSERT INTO PhoneType (description) VALUES (?)";
         private $addChristmasFoodOrderString = "INSERT INTO ChristmasFoodOrder (aid, needDelievery) VALUES (?, ?)";

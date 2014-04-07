@@ -67,7 +67,8 @@
 			foreach($families as $fam) {
 				if( !empty($fam['firstname']) ) {
 					$person = array($fam['firstname'], $fam['firstname'], "", 1, "", 1, $secondaryPhoneNum, "", $notes);
-					$dba->addPerson($person);
+					$tempID = $dba->addPerson($person);
+					$something = $dba->addPersonToHouse($tempID,$addressKey);
 					array_push($famIds, $personId);
 				}
 				
