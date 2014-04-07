@@ -302,7 +302,7 @@
         public function verify_username_and_pass($params) 
         {
 				
-			$stmt = "SELECT * FROM members WHERE username = ? AND password = ? LIMIT 1;";
+			$stmt = "SELECT * FROM Members WHERE username = ? AND password = ? LIMIT 1;";
 			$result = $this->makeStatementSelect($stmt, $params);
 			print_r($result);
 			return $result; 
@@ -311,8 +311,8 @@
 		public function validate_new_user($username, $email, $access_code) 
 		{
 		
-			$query_1 = 'SELECT username FROM members WHERE username = ?';
-			$query_2 = 'SELECT username FROM members WHERE email = ?';
+			$query_1 = 'SELECT username FROM Members WHERE username = ?';
+			$query_2 = 'SELECT username FROM Members WHERE email = ?';
 			
 			$errors = array( 'username' => null, 'email' => null, 'access_code' => null);	//associative array containing all possible errors we could find with initial values set to null.
 			$found_error = false;															// a boolean variable that tells us if we found an error
@@ -348,7 +348,7 @@
 		
 		public function insert_user($params) 
 		{
-			$stmt = "INSERT INTO members (fname, lname, initials, email, username, password, role) VALUES( ?, ?, ?, ?, ?, ?, ?);";
+			$stmt = "INSERT INTO Members (fname, lname, initials, email, username, password, role) VALUES( ?, ?, ?, ?, ?, ?, ?);";
 			$result = $this->makeStatementInsert($stmt, $params);
 
 			return $result;

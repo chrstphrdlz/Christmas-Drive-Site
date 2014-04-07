@@ -21,7 +21,7 @@ if( !empty($_POST) ) {
 	
 	if( $result == true ) {
 		//redirect to login page
-	//	header("location: login.php");
+		header("location: login.php");
 	}
 }
 
