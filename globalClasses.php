@@ -18,7 +18,8 @@
         private $addChildString = "INSERT INTO Children (firstName, lastName, age, childID, childIDNo) VALUES (?,?,?)";
         private $addClothingOrderString = "INSERT INTO ClothingOrders (gender, infantOutfitSize, infantOutfitSpecial, jeansSize, jeansSpecial, shirtSize, shirtSpecial, socksSize, socksSpecial, underwearSize, diaperSize, uodSpecial, uniIO, uniSocks, uniDiapers, notes, checklist, completedBy) VALUES (? ,? ,? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         private $addPhoneType = "INSERT INTO PhoneType (description) VALUES (?)";
-        private $addFoodOrder = "INSERT INTO FoodOrder (aid, needDelievery) VALUES (?, ?)";
+        private $addChristmasFoodOrderString = "INSERT INTO ChristmasFoodOrder (aid, needDelievery) VALUES (?, ?)";
+		private $addThanksGivingFoodOrderString = "INSERT INTO ThanksgivingFoodOrder (aid, needDelievery) VALUES (?, ?, ?)";
         private $getAllClothingOrdersInAddress = "SELECT co.coid FROM ClothingOrders co, peopleInHouse pih WHERE co.orderedById = pih.pid AND pih.aid = (?)";
         private $getNumberOfPeopleInFoodOrder = "SELECT ad.numPeopleInHouse FROM Addresses ad WHERE ad.aid = (?)";
         private $getClothingOrderForPerson = "SELECT co.coid FROM ClothingOrders co WHERE co.orderedById = (?)";
@@ -285,10 +286,16 @@
             return $this->makeStatementSelect($this->getNumberOfPeopleInFoodOrder, array($addressKey));
         }
         
-        public function addFoodOrder($addressKey, $numPeople, $needDelivery)
+        public function addChristmasFoodOrder($addressKey, $numPeople, $needDelivery)
         {
-            $this->makeStatementInsert($this->addFoodOrder, array($addressKey, $numPeople, $needDelivery));
+            $this->makeStatementInsert($this->addChristmasFoodOrderString, array($addressKey, $numPeople, $needDelivery));
         }
+		
+		public function addThanksgivingFoodOrder($addressKey, $numPeople, $needDelivery)
+        {
+            $this->makeStatementInsert($this->addThanksGivingFoodOrderString, array($addressKey, $numPeople, $needDelivery));
+        }
+        
         public function getClothingOrderForPerson($personId)
         {
             return $this->makeStatementSelect($this->getClothingOrderForPerson , array($personId));

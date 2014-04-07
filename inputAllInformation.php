@@ -89,7 +89,9 @@
             $_SESSION["personId"];
             $_SESSION["addressId"];
                     
-            $errorOnPage = true;        
+            $errorOnPage = true;   
+            
+            $dba->addThanksgivingFoodOrder($addressKey, $needDelivery);
             
             if($orderingFood)
             {
