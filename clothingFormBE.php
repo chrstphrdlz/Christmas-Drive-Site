@@ -179,7 +179,7 @@
             
             $arrayOfValues = array($personOrderingID, $childOrderingID, $gender, $infantOutfitSize, $infantOutfitSpecial, $jeansSize, $jeansSpecial, $shirtSize, $shirtSpecial, $socksSize, $socksSpecial, $underwearSize, $diaperSize, $uodSpecial, $uniIO, $uniSocks, $uniDiapers, $notes, $checklist, $initials);
             
-            if(!$dba->addClothingOrder($arrayOfValues))
+            if(!$dba->addClothingOrder($arrayOfValues) && !$childOrderingID)
             {
             	echo "Failed to add order";
             }
@@ -187,15 +187,16 @@
             {
                 if($_POST["otherChild"] == 2)
                 {
+                    session_destroy();
                     echo "success";
                     echo "value is ";
-                    //header("Location: christmasDriveForm.php");
+                    header("Location: christmasDriveForm.php");
                 }
                 else
                 {
                     echo "success";
                     echo "value is ";
-                    //header("Location: clothingForm.html");
+                    header("Location: clothingForm.php");
                 }
             }
         ?>

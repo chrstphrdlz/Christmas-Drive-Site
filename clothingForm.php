@@ -11,6 +11,44 @@
         
         <script type ="text/javascript">
         
+        function validateName(inputString)
+        {
+            var regexUnwantedCharacters = /[^A-Za-z -.]+/i;
+            var neededCharacters = /[A-Z|a-z]/i;
+            
+            if(!inputString || inputString.length < 1)
+                return false;
+                
+            return !regexUnwantedCharacters.test(inputString) && neededCharacters.test(inputString);
+        }
+        
+        function validateInitials(inputString)
+        {
+            var regexUnwantedCharacters = /[^A-Za-z -.]+/i;
+            var neededCharacters = /[A-Z|a-z]/i;
+            
+            if(!inputString || inputString.length < 1)
+                return false;
+                
+            return !regexUnwantedCharacters.test(inputString) && neededCharacters.test(inputString);
+        }
+        
+        function highlightNameBoxIfNotValidated(idString)
+        {
+            var element = document.getElementById(idString);
+            
+            if(!validateName(element.value) && element.value.length > 0) changeElementColor(element, 'red');
+            else changeElementColor(element, 'white');
+        }
+        
+        function highlightInitialsBoxIfNotValidated(idString)
+        {
+            var element = document.getElementById(idString);
+            
+            if(!validateIntials(element.value) && element.value.length > 0 && element.value.length < 4) changeElementColor(element, 'red');
+            else changeElementColor(element, 'white');
+        }
+        
         function childIDSelect()
         {
             if(document.getElementById("childIDNo").checked)
@@ -239,29 +277,29 @@
         <form name="clothingForm" action="clothingFormBE.php" method="POST">
             <div id="firstNameDiv" name="firstNameDiv">
             	Head of Household Name*<br>
-                First Name <input type="text" id="firstName" name="firstName" onkeyup="highlightNameBoxIfNotValidated('firstName')"><br>
+                First Name <input type="text" id="firstName" name="firstName" onkeyup="javascript:highlightNameBoxIfNotValidated('firstName');"><br>
             </div>
             
             <div id="lastNameDiv" name="lastNameDiv">
-                Last Name <input type="text" id="lastName" name="lastName" onkeyup="highlightNameBoxIfNotValidated('lastName')"><br><br>
+                Last Name <input type="text" id="lastName" name="lastName" onkeyup="javascript:highlightNameBoxIfNotValidated('lastName');"><br><br>
             </div>
             
             <div id="parentFirstNameDiv" name="parentFirstNameDiv">
             	Parent's Name Shopping (if different from head of household)<br>
-                First Name <input type="text" id="parentFirstName" name="parentFirstName" onkeyup="highlightNameBoxIfNotValidated('parentFirstName')"><br>
+                First Name <input type="text" id="parentFirstName" name="parentFirstName" onkeyup="javascipt:highlightNameBoxIfNotValidated('parentFirstName');"><br>
             </div>
             
             <div id="parentLastNameDiv" name="parentLastNameDiv">
-                Last Name <input type="text" id="parentLastName" name="parentLastName" onkeyup="highlightNameBoxIfNotValidated('parentLastName')"><br><br>
+                Last Name <input type="text" id="parentLastName" name="parentLastName" onkeyup="javascript:highlightNameBoxIfNotValidated('parentLastName');"><br><br>
             </div>
             
             <div id="childFirstNameDiv" name="childFirstNameDiv">
             	Child's Name<br>
-                First Name <input type="text" id="childFirstName" name="childFirstName" onkeyup="highlightNameBoxIfNotValidated('childFirstName')"><br>
+                First Name <input type="text" id="childFirstName" name="childFirstName" onkeyup="javascript:highlightNameBoxIfNotValidated('childFirstName');"><br>
             </div>
             
             <div id="childLastNameDiv" name="childLastNameDiv">
-                Last Name <input type="text" id="childLastName" name="childLastName" onkeyup="highlightNameBoxIfNotValidated('childLastName')"><br><br>
+                Last Name <input type="text" id="childLastName" name="childLastName" onkeyup="javascript:highlightNameBoxIfNotValidated('childLastName');"><br><br>
             </div>
             
             <div id="childIDDiv" name="childIDDiv">
@@ -271,7 +309,7 @@
             </div>
             
             <div id="childIDNoSDiv" name="childIDNoSDiv" style="display:none;">
-                If "No" make notation <input type="text" id="childIDNoS" name="childIDNoS" onkeyup="highlightNameBoxIfNotValidated('childIDNoS')"><br><br>
+                If "No" make notation <input type="text" id="childIDNoS" name="childIDNoS" onkeyup=""><br><br>
             </div>
             
             <div id="sexOfChildDiv" name="sexOfChildDiv">
@@ -333,7 +371,7 @@
 					</div>
 					
 					<div id= "girlsIOSpecialDiv" name = "girlsIOSpecialDiv" style="display:none;">
-						Girl's Special Request (infant outfit)* <input type="text" id="girlsIOSpecial" name="girlsIOSpecial" onkeyup="highlightNameBoxIfNotValidated('girlsIOSpecial')"><br><br>
+						Girl's Special Request (infant outfit)* <input type="text" id="girlsIOSpecial" name="girlsIOSpecial" onkeyup=""><br><br>
 					</div>
 				</div>
 				
@@ -388,7 +426,7 @@
 					</div>
 					
 					<div id= "girlsJeansSpecialDiv" name = "girlsJeansSpecialDiv" style="display:none;">
-						Girl's Special Request (jeans)* <input type="text" id="girlsJeansSpecial" name="girlsJeansSpecial" onkeyup="highlightNameBoxIfNotValidated('girlsJeansSpecial')"><br><br>
+						Girl's Special Request (jeans)* <input type="text" id="girlsJeansSpecial" name="girlsJeansSpecial" onkeyup=""><br><br>
 					</div>
 					
 					<div id="girlsShirtDiv" name="girlsShirtDiv" style="display:inline;">
@@ -424,7 +462,7 @@
 					</div>
 					
 					<div id= "girlsShirtSpecialDiv" name = "girlsShirtSpecialDiv" style="display:none;">
-						Girl's Special Request (shirt)* <input type="text" id="girlsShirtSpecial" name="girlsShirtSpecial" onkeyup="highlightNameBoxIfNotValidated('girlsShirtSpecial')"><br><br>
+						Girl's Special Request (shirt)* <input type="text" id="girlsShirtSpecial" name="girlsShirtSpecial" onkeyup=""><br><br>
 					</div>
 				</div>
 				
@@ -452,7 +490,7 @@
 				</div>
 				
 				<div id= "girlsSocksSpecialDiv" name = "girlsSocksSpecialDiv" style="display:none;">
-					Girl's Special Request (socks)* <input type="text" id="girlsSocksSpecial" name="girlsSocksSpecial" onkeyup="highlightNameBoxIfNotValidated('girlsSocksSpecial')"><br><br>
+					Girl's Special Request (socks)* <input type="text" id="girlsSocksSpecial" name="girlsSocksSpecial" onkeyup=""><br><br>
 				</div>
 				
 				<div id="girlsUODDiv" name="girlsUODDiv" style="display:inline;">
@@ -503,7 +541,7 @@
 				</div>
 				
 				<div id= "girlsUODSpecialDiv" name = "girlsUODSpecialDiv" style="display:none;">
-					Girl's Special Request (underwear/diapers)* <input type="text" id="girlsUODSpecial" name="girlsUODSpecial" onkeyup="highlightNameBoxIfNotValidated('UOD')"><br><br>
+					Girl's Special Request (underwear/diapers)* <input type="text" id="girlsUODSpecial" name="girlsUODSpecial" onkeyup=""><br><br>
 				</div>
             </div>
             
@@ -539,7 +577,7 @@
 					</div>
 					
 					<div id= "boysIOSpecialDiv" name = "boysIOSpecialDiv" style="display:none;">
-						Boy's Special Request (infant outfit)* <input type="text" id="boysIOSpecial" name="boysIOSpecial" onkeyup="highlightNameBoxIfNotValidated('boysIOSpecial')"><br><br>
+						Boy's Special Request (infant outfit)* <input type="text" id="boysIOSpecial" name="boysIOSpecial" onkeyup=""><br><br>
 					</div>
 				</div>
 				
@@ -586,7 +624,7 @@
 					</div>
 					
 					<div id= "boysJeansSpecialDiv" name = "boysJeansSpecialDiv" style="display:none;">
-						Boy's Special Request (jeans)* <input type="text" id="boysJeansSpecial" name="boysJeansSpecial" onkeyup="highlightNameBoxIfNotValidated('boysJeansSpecial')"><br><br>
+						Boy's Special Request (jeans)* <input type="text" id="boysJeansSpecial" name="boysJeansSpecial" onkeyup=""><br><br>
 					</div>
 					
 					<div id="boysShirtDiv" name="boysShirtDiv" style="display:inline;">
@@ -619,7 +657,7 @@
 					</div>
 					
 					<div id= "boysShirtSpecialDiv" name = "boysShirtSpecialDiv" style="display:none;">
-						Boy's Special Request (shirt)* <input type="text" id="boysShirtSpecial" name="boysShirtSpecial" onkeyup="highlightNameBoxIfNotValidated('boysShirtSpecial')"><br><br>
+						Boy's Special Request (shirt)* <input type="text" id="boysShirtSpecial" name="boysShirtSpecial" onkeyup=""><br><br>
 					</div>
 				</div>
 				
@@ -647,7 +685,7 @@
 				</div>
 				
 				<div id= "boysSocksSpecialDiv" name = "boysSocksSpecialDiv" style="display:none;">
-					Boy's Special Request (socks)* <input type="text" id="boysSocksSpecial" name="boysSocksSpecial" onkeyup="highlightNameBoxIfNotValidated('boysSocksSpecial')"><br><br>
+					Boy's Special Request (socks)* <input type="text" id="boysSocksSpecial" name="boysSocksSpecial" onkeyup=""><br><br>
 				</div>
 				
 				<div id="boysUODDiv" name="boysUODDiv" style="display:inline;">
@@ -694,7 +732,7 @@
 				</div>
 				
 				<div id= "boysUODSpecialDiv" name = "boysUODSpecialDiv" style="display:none;">
-					Boy's Special Request (underwear/diapers)* <input type="text" id="boysUODSpecial" name="boysUODSpecial" onkeyup="highlightNameBoxIfNotValidated('UOD')"><br><br>
+					Boy's Special Request (underwear/diapers)* <input type="text" id="boysUODSpecial" name="boysUODSpecial" onkeyup=""><br><br>
 				</div>
             </div>
             
@@ -741,7 +779,7 @@
             </div>
             
             <div id="notesDiv" name="notesDiv">
-           		Notes <input type="text" id="notes" name="notes" onkeyup="highlightNameBoxIfNotValidated('notes')"><br><br>
+           		Notes <input type="text" id="notes" name="notes" onkeyup=""><br><br>
             </div>
             
             <div id="checklistDiv" name="checklistDiv">
@@ -755,7 +793,7 @@
             </div>
             
             <div id="initialsDiv" name="initialsDiv">
-           		Form Completed By <input type="text" id="initials" name="initials" onkeyup="highlightNameBoxIfNotValidated('initials')"><br><br>
+           		Form Completed By <input type="text" id="initials" name="initials" onkeyup="javascript:highlightIntialsBoxIfNotValidated('initials');"><br><br>
             </div>
             
             <input type="submit">

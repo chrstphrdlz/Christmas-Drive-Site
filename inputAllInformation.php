@@ -55,6 +55,25 @@
                 echo "Failed to add person";
             }
             
+            $fam1 = array( 'firstname' => $_POST['firstName1'], 'lastname' => $_POST['lastName1']);
+			$fam2 = array( 'firstname' => $_POST['firstName2'], 'lastname' => $_POST['lastName2']);
+			$fam3 = array( 'firstname' => $_POST['firstName3'], 'lastname' => $_POST['lastName3']);
+			$fam4 = array( 'firstname' => $_POST['firstName4'], 'lastname' => $_POST['lastName4']);
+			$fam5 = array( 'firstname' => $_POST['firstName5'], 'lastname' => $_POST['lastName5']);
+			
+			$families = array( 0 => $fam1, 1 => $fam2, 2 => $fam3, 3 => $fam4, 4 => $fam5);
+			$famIds = array();
+			$i = 0;
+			foreach($families as $fam) {
+				if( !empty($fam['firstname']) ) {
+					$person = array($fam['firstname'], $fam['firstname'], "", 1, "", 1, $secondaryPhoneNum, "", $notes);
+					$dba->addPerson($person);
+					array_push($famIds, $personId);
+				}
+				
+				$i++;
+			}
+            
             $params = array();
             if($_POST["addressType"] == 'apartment')
             {
