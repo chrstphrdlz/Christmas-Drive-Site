@@ -129,6 +129,7 @@ CREATE TABLE Addresses
     streetName  VARCHAR(30) NOT NULL DEFAULT "",
     city        VARCHAR(20) NOT NULL DEFAULT "",
     zipCode     VARCHAR(12) NOT NULL DEFAULT "",
+    numPeopleInHouse INT,
     PRIMARY KEY (aid), 
     CONSTRAINT validAddress UNIQUE (houseNumber, streetName, city, zipCode)
 );
@@ -162,7 +163,6 @@ CREATE TABLE HeadOfHousehold
 CREATE TABLE FoodOrder
 (
     aid INT,
-    numPeople INT,
     needDelievery BOOL NOT NULL DEFAULT 0,
     PRIMARY KEY (aid),
     FOREIGN KEY (aid) REFERENCES Addresses(aid)

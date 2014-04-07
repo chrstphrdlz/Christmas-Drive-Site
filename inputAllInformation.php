@@ -65,14 +65,17 @@
             {
                 $params[] = $_POST["street_number"];
             }
+            
+            $numPeople = $_POST["numberOfFamilyMembers"];
+            
             $params[] = $_POST["route"];
             $params[] = $_POST["locality"];
             $params[] = $_POST["postal_code"];
+            $params[] = $numPeople;
             $addressKey = $dba->addAddress($params);
             $something = $dba->addPersonToHouse($personId,$addressKey);
             //insert ignore into head of household
             $dba->addHeadOfHouseHoldIfNotSet($addressKey, $personId);
-            $numPeople = $_POST["numberOfFamilyMembers"];
             $needDelivery = $_POST["deleivery"] == "Yes" ? true:false;
             echo $_POST["foodOrClothing"] . "<br>";
             $orderingFood = $_POST["foodOrClothing"] == "food" ? true:false;
@@ -103,8 +106,8 @@
                     if($numFoodOrdersForAddress==0)
                     {
                         echo "No food order found for this address, adding food order" . "<br>";
-                        $dba->addFoodOrder($addressKey, $numPeople, $needDelivery);
-                        header("Location: christmasDriveForm.php");
+                        $dba->addFoodOrder($addressKey, $needDelivery);
+                        //header("Location: christmasDriveForm.php");
                         $errorOnPage = false;
                     }
                     else

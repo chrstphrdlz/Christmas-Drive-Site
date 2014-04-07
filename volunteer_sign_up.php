@@ -1,4 +1,14 @@
-<?php
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="CSS/volunteer_sign_up.css" />
+	<title>Volunteer Sign-up</title>
+	
+</head>
+<body><?php
 require_once 'membership.php';		//indicate required files
 $membership = new Membership();				//create new Membership object
 
@@ -9,9 +19,9 @@ if( !empty($_POST) ) {
 	//add new user to DB
 	$result = $membership->add_new_user($_POST);
 	
-	if( $result === true ) {
+	if( $result == true ) {
 		//redirect to login page
-		header("location: login.php");
+	//	header("location: login.php");
 	}
 }
 
@@ -21,16 +31,6 @@ if( !empty($_POST) ) {
 
 
 ?>
-
-<!doctype html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="CSS/volunteer_sign_up.css" />
-	<title>Volunteer Sign-up</title>
-	
-</head>
-<body>
 	<div>
 		<h1>Volunteer Sign-up</h1>
 		<form action="" method="post">

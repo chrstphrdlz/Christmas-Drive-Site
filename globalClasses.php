@@ -9,7 +9,7 @@
         private $addFullPersonString = "INSERT INTO PersonOrdering (firstName, lastName, email, primaryPhoneId, primaryPhoneNum, secondaryPhoneId, secondaryPhoneNum, languageId, notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
         private $addLanguageString = "INSERT INTO Language (languageName) VALUES (?);";
         private $languageQueryString = "SELECT * FROM Language  ORDER BY languageName";
-        private $addressAddingString = "INSERT IGNORE INTO Addresses (houseNumber, streetName, city, zipCode) VALUES (?, ?, ?, ?)";
+        private $addressAddingString = "INSERT IGNORE INTO Addresses (houseNumber, streetName, city, zipCode, numPeopleInHouse) VALUES (?, ?, ?, ?, ?)";
         private $findAddedAddressString = "SELECT * FROM Addresses WHERE (houseNumber, streetName, city, zipCode) = (?, ?, ?, ?) LIMIT 1";
         private $getColumnMaxStringLength = "SELECT CHARACTER_MAXIMUM_LENGTH FROM INFORMATION_SCHEMA.COLUMNS WHERE (table_name, COLUMN_NAME) = (?, ?)";
         private $addPersonToHousehold = "INSERT INTO peopleInHouse (pid,aid) VALUES (?,?)";
@@ -18,9 +18,9 @@
         private $addChildString = "INSERT INTO Children (firstName, lastName, age, childID, childIDNo) VALUES (?,?,?)";
         private $addClothingOrderString = "INSERT INTO ClothingOrders (gender, infantOutfitSize, infantOutfitSpecial, jeansSize, jeansSpecial, shirtSize, shirtSpecial, socksSize, socksSpecial, underwearSize, diaperSize, uodSpecial, uniIO, uniSocks, uniDiapers, notes, checklist, completedBy) VALUES (? ,? ,? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         private $addPhoneType = "INSERT INTO PhoneType (description) VALUES (?)";
-        private $addFoodOrder = "INSERT INTO FoodOrder (aid, numPeople, needDelievery) VALUES (?, ?, ?)";
+        private $addFoodOrder = "INSERT INTO FoodOrder (aid, needDelievery) VALUES (?, ?)";
         private $getAllClothingOrdersInAddress = "SELECT co.coid FROM ClothingOrders co, peopleInHouse pih WHERE co.orderedById = pih.pid AND pih.aid = (?)";
-        private $getNumberOfPeopleInFoodOrder = "SELECT fo.numPeople FROM FoodOrder fo WHERE fo.aid = (?)";
+        private $getNumberOfPeopleInFoodOrder = "SELECT ad.numPeopleInHouse FROM Addresses ad WHERE ad.aid = (?)";
         private $getClothingOrderForPerson = "SELECT co.coid FROM ClothingOrders co WHERE co.orderedById = (?)";
         private $getMemberRoleWithUsernameAndPassword = "SELECT role FROM Members WHERE (username, password) = (?, ?)";
         private $hostname;
@@ -103,6 +103,7 @@
             {
                 echo "<br>select failed for ";
                 print_r($params);
+                echo " for query: " . $statementString . "<br>";
                 print_r($mySqlConnection->errorInfo());
                 echo "<br>";
             }
@@ -247,8 +248,14 @@
             echo "the returner is " . $returner;
             if($returner == 0)
             {
-                $address = $this->getAddresses($params)[0];
+                echo "now slicing";
+                print_r(array_slice($params,0 ,-1 ));
+                $address = $this->getAddresses(array_slice($params,0 ,-1 ))[0];
                 return $address->aid;
+            }
+            else
+            {
+                echo "found id " . $returner;
             }
             return $returner;
         }
@@ -311,14 +318,14 @@
 			$found_error = false;															// a boolean variable that tells us if we found an error
 			
 			//check username is unique
-			$result = $this->makeStatementInsert( $query_1, array($username) );
+			$result = $this->makeStatementSelect( $query_1, array($username) );
 			if( !empty($result) ) {
 				$errors['username'] = 'That user name already exists.';
 				$found_error = true;
 			}
 			
 			//check email is unique
-			$result = $this->makeStatementInsert( $query_2, array($email) );
+			$result = $this->makeStatementSelect( $query_2, array($email) );
 			if( !empty($result) ) {
 				$errors['email'] =  'This email already has an account.';
 				$found_error = true;
