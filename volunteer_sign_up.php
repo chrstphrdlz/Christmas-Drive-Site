@@ -6,7 +6,22 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="CSS/volunteer_sign_up.css" />
 	<title>Volunteer Sign-up</title>
-	
+	<script>
+	    function verifySamePassword()
+	    {
+	        var stringOne = document.getElementById('password').value;
+	        var stringTwo = document.getElementById('passwordConfirm').value;
+	        
+	        if(stringOne == stringTwo)
+	        {
+	            document.getElementById("confirmButton").disabled = false;
+	        }
+	        else
+	        {
+	            document.getElementById("confirmButton").disabled = true;
+	        }
+	    }
+	</script>
 </head>
 <body><?php
 require_once 'membership.php';		//indicate required files
@@ -73,7 +88,11 @@ if( !empty($_POST) ) {
 					</li>
 					<li>
 						<label for="password">Password:</label>
-						<input type="password" name="password" id="password" required="required">
+						<input type="password" name="password" id="password" required="required" onkeyup="verifySamePassword()">
+					</li>
+					<li>
+						<label for="passwordConfirm">Confirm Password:</label>
+						<input type="password" name="passwordConfirm" id="passwordConfirm" required="required" onkeyup="verifySamePassword()">
 					</li>
 					<li>
 						<label for="access_code">Access Code:</label>
@@ -81,7 +100,7 @@ if( !empty($_POST) ) {
 						<?php if( isset($result) && $result !== true && $result['access_code'] ) echo '<h5 class="alert"> ' . $result['access_code'] . '</h5>'; ?>
 					</li>
 					<li>
-						<input type="submit" value="Submit">
+						<input type="submit" id="confirmButton" value="Submit">
 					</li>
 				</ul>
 			</fieldset>
