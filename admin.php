@@ -1,8 +1,10 @@
 <?php
+echo "test";
 require_once 'membership.php';
+echo "test1";
 
 require_once 'makeReports.php';
-
+echo "test2";
 $membership = new Membership();
 
 //confirm that user has logged in before displaying page(if they have not redirect to login page)
@@ -30,11 +32,11 @@ if( isset($_POST['clothingOrders']) ) {
 
 
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<link rel="stylesheet" href="login.css" />
+	<link rel="stylesheet" href="CSS/login.css" />
 	<title>Admin Page</title>
 </head>
 <body>
