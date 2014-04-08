@@ -18,7 +18,6 @@ if( $_POST && !empty($_POST['username']) && !empty($_POST['pwd']) ) {
 ?>
 
 
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -26,35 +25,26 @@ if( $_POST && !empty($_POST['username']) && !empty($_POST['pwd']) ) {
 	<link rel="stylesheet" href="CSS/login.css" />
 	<title>Login Page</title>
 </head>
-<body>
+<body id="bodyBackground">
+    <h3 class="sign_up">Not a volunteer yet? <a href="volunteer_sign_up.php">Sign-up!</a><span class="shortTab"></span></h3>
 	<div class="login_container">
 		<form method="post" action="">
 		<fieldset>
-			<h1>Login</h1>
+			<h1 style="text-align: center;">Login</h1>
 			<ul>
-				<li>
-					<label for="username">Username</label>
-					<input type="text" name="username" required="required" />
-				</li>
+					<input style="text-align: center; margin-left: 25px;" type="text"  placeholder="Username" name="username" required="required" tabindex="1">
 				
-				<li>
-					<label for="pwd">Password</label>
-					<input type="password" name="pwd" required="required" />
-				</li>
-				
-				<li>
-					<input type="submit" id="submit" value="login" name="submit" />
-				</li>
+					<input style="text-align: center; margin-left: 25px;" type="password" placeholder="password" name="pwd" required="required" tabindex="2">	
 			</ul>
+		
+					<p style="text-align: center;"><input type="submit" id="submit" value="sign in" name="submit" align="middle"/></p> 
 			<?php 
 			if( isset($response) ) {
 				echo '<h4 class="active">' . $response . '</h4>';	
 			}
 			?>
-			<h3 class="sign_up"><a href="volunteer_sign_up.php">Sign-up</a></h3>
 		</fieldset>
 		</form>
-		
 	</div>
 </body>
 </html>
