@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <link rel="stylesheet" type="text/css" href="CSS/clothingForm.css">
 	<?php
         session_start();
         $personOrderingID = $_SESSION["personOrderingClothesId"];
@@ -275,8 +276,10 @@
     
     <body>
         <form name="clothingForm" action="clothingFormBE.php" method="POST">
+		<fieldset>
+		<legend>Parent/Gaurdian Information</legend>
             <div id="firstNameDiv" name="firstNameDiv">
-            	Head of Household Name*<br>
+            	<h4>Head of Household Name*</h4><br>
                 First Name <input type="text" id="firstName" name="firstName" onkeyup="javascript:highlightNameBoxIfNotValidated('firstName');"><br>
             </div>
             
@@ -285,25 +288,27 @@
             </div>
             
             <div id="parentFirstNameDiv" name="parentFirstNameDiv">
-            	Parent's Name Shopping (if different from head of household)<br>
+            	<h4>Parent's Name Shopping (if different from head of household)</h4><br>
                 First Name <input type="text" id="parentFirstName" name="parentFirstName" onkeyup="javascipt:highlightNameBoxIfNotValidated('parentFirstName');"><br>
             </div>
             
             <div id="parentLastNameDiv" name="parentLastNameDiv">
-                Last Name <input type="text" id="parentLastName" name="parentLastName" onkeyup="javascript:highlightNameBoxIfNotValidated('parentLastName');"><br><br>
+                Last Name  <input type="text" id="parentLastName" name="parentLastName" onkeyup="javascript:highlightNameBoxIfNotValidated('parentLastName');"><br><br>
             </div>
-            
+            </fieldset>
+			<fieldset>
+		    <legend>Child Information</legend>
             <div id="childFirstNameDiv" name="childFirstNameDiv">
-            	Child's Name<br>
+            	<h4>Child's Name</h4><br>
                 First Name <input type="text" id="childFirstName" name="childFirstName" onkeyup="javascript:highlightNameBoxIfNotValidated('childFirstName');"><br>
             </div>
             
             <div id="childLastNameDiv" name="childLastNameDiv">
-                Last Name <input type="text" id="childLastName" name="childLastName" onkeyup="javascript:highlightNameBoxIfNotValidated('childLastName');"><br><br>
+                Last Name  <input type="text" id="childLastName" name="childLastName" onkeyup="javascript:highlightNameBoxIfNotValidated('childLastName');"><br><br>
             </div>
             
             <div id="childIDDiv" name="childIDDiv">
-            	Child's ID*<br>
+            	<h4>Child's ID*</h4><br>
             	<input id = "childIDYes" onclick = "javascript:childIDSelect();" type="radio" name="childID" value="Yes">Yes<br>
                 <input id = "childIDNo"  onclick = "javascript:childIDSelect();" type="radio" name="childID" value="No">No<br><br>
             </div>
@@ -313,14 +318,14 @@
             </div>
             
             <div id="sexOfChildDiv" name="sexOfChildDiv">
-            	Sex of Child*<br>
+            	<h4>Sex of Child*</h4><br>
             	<input id = "boy" type="radio" name="sexOfChild" value="Boy" onclick = "javascript:genderSelect();">Boy<br>
                 <input id = "girl" type="radio" name="sexOfChild" value="Girl" onclick = "javascript:genderSelect();">Girl<br>
                 <input id = "unknown" type="radio" name="sexOfChild" value="Unknown" onclick = "javascript:genderSelect();">Unknown<br><br>
             </div>
             
             <div id="ageDiv">
-                Age*<br>
+                <h4>Age*</h4><br>
                 <select id="age" name="age">
                   <option value=0></option>
                   <option value=1>1</option>
@@ -340,23 +345,23 @@
             </div>
             
             <!-- GIRLS CLOTHING HERE -->
-            
+            <fieldset id="girlsclothing">
             <div id="girlsOption" name="girlsOption" style="display:none">
 				<div id="girlsIOJDiv" name="girlsIOJDiv" style="display:inline;">
-					Select Infant Outfit, or Jeans & Shirt - Girl*<br>
+					<h4>Select Infant Outfit, or Jeans & Shirt - Girl*</h4><br>
 					<input id = "girlsIO" onclick = "girlsIOJSelect()" type="radio" name="girlsIOJ" value=1>Girl's Infant Outfit<br>
 					<input id = "girlsJAS" onclick = "girlsIOJSelect()" type="radio" name="girlsIOJ" value=2>Girl's Jeans & Shirt<br><br>
 				</div>
 				
 				<div id="girlsIOBigDiv" style="display:none">
 					<div id="girlsIODiv" name="girlsIODiv" style="display:inline;">
-						Select Infant Outfit, or Special Request Outfit*<br>
+						<h4>Select Infant Outfit, or Special Request Outfit*</h4><br>
 						<input id = "girlsIO1" onclick = "javascript:girlsIOSSelect();" type="radio" name="girlsIO" value=1>Girl's Infant Outfit<br>
 						<input id = "girlsIOS" onclick = "javascript:girlsIOSSelect();" type="radio" name="girlsIO" value=2>Special Request Girl's Infant Outfit<br><br>
 					</div>
 					
 					<div id="girlsInfantSizeDiv" style="display:none;">
-						Girl's Infant Outfit Size*<br>
+						<h4>Girl's Infant Outfit Size*</h4><br>
 						<select id="girlsInfantSize" name="girlsInfantSize">
 							<option value="" selected="selected"></option>
 							<option value="A01 - Girl's Newborn Outfit" >A01 - Girl's Newborn Outfit</option>
@@ -371,19 +376,19 @@
 					</div>
 					
 					<div id= "girlsIOSpecialDiv" name = "girlsIOSpecialDiv" style="display:none;">
-						Girl's Special Request (infant outfit)* <input type="text" id="girlsIOSpecial" name="girlsIOSpecial" onkeyup=""><br><br>
+						<h4>Girl's Special Request (infant outfit)*</h4> <input type="text" id="girlsIOSpecial" name="girlsIOSpecial" onkeyup=""><br><br>
 					</div>
 				</div>
 				
 				<div id="girlsJASDiv" style="display:none;">
 					<div id="girlsJeansDiv" name="girlsJeansDiv" style="display:inline;">
-						Select Jeans or Special Request Item - Girl*<br>
+						<h4>Select Jeans or Special Request Item - Girl*</h4><br>
 						<input id = "girlsJeans" onclick = "javascript:girlsJeansSelect();" type="radio" name="girlsJeans" value=1>Girl's Jeans<br>
 						<input id = "girlsJeansS" onclick = "javascript:girlsJeansSelect();" type="radio" name="girlsJeans" value=2>Girl's Special Request Item (Jeans)<br><br>
 					</div>
 					
 					<div id="girlsJeansSizeDiv" style="display:none;">
-						Girl's Jeans Size*<br>
+						<h4>Girl's Jeans Size*</h4><br>
 						<select id="girlsJeansSize" name="girlsJeansSize">
 							<option value="" selected="selected"></option>
 							<option value="B01 - Toddler Girl's Jeans, 2T" >B01 - Toddler Girl's  Jeans, 2T</option>
@@ -426,17 +431,17 @@
 					</div>
 					
 					<div id= "girlsJeansSpecialDiv" name = "girlsJeansSpecialDiv" style="display:none;">
-						Girl's Special Request (jeans)* <input type="text" id="girlsJeansSpecial" name="girlsJeansSpecial" onkeyup=""><br><br>
+						<h4>Girl's Special Request (jeans)* </h4><input type="text" id="girlsJeansSpecial" name="girlsJeansSpecial" onkeyup=""><br><br>
 					</div>
 					
 					<div id="girlsShirtDiv" name="girlsShirtDiv" style="display:inline;">
-						Select Shirt or Special Request Items - Girl*<br>
+						<h4>Select Shirt or Special Request Items - Girl*</h4><br>
 						<input id = "girlsShirt" onclick = "javascript:girlsShirtSelect();" type="radio" name="girlsShirt" value=1>Girl's Shirt<br>
 						<input id = "girlsShirtS" onclick = "javascript:girlsShirtSelect();" type="radio" name="girlsShirt" value=2>Girl's Special Request Item (shirt)<br><br>
 					</div>
 					
 					<div id="girlsShirtSizeDiv" style="display:none;">
-					   Girl's Shirt Size*<br>
+					   <h4>Girl's Shirt Size*</h4><br>
 						<select id="girlsShirtSize" name="girlsShirtSize">
 							<option value="" selected="selected"></option>
 							<option value="C01 -  Toddler Girl's Shirt, 2T" >C01 -  Toddler Girl's Shirt, 2T</option>
@@ -462,18 +467,18 @@
 					</div>
 					
 					<div id= "girlsShirtSpecialDiv" name = "girlsShirtSpecialDiv" style="display:none;">
-						Girl's Special Request (shirt)* <input type="text" id="girlsShirtSpecial" name="girlsShirtSpecial" onkeyup=""><br><br>
+						<h4>Girl's Special Request (shirt)*</h4> <input type="text" id="girlsShirtSpecial" name="girlsShirtSpecial" onkeyup=""><br><br>
 					</div>
 				</div>
 				
 				<div id="girlsSocksDiv" name="girlsSocksDiv" style = "display:inline;">
-					Select Socks or Special Request Items - Girl*<br>
+					<h4>Select Socks or Special Request Items - Girl*</h4><br>
 					<input id = "girlsSocks" onclick = "javascript:girlsSocksSelect();" type="radio" name="girlsSocks" value=1>Girl's Socks<br>
 					<input id = "girlsSocksS" onclick = "javascript:girlsSocksSelect();" type="radio" name="girlsSocks" value=2>Girl's Special Request Item (socks)<br><br>
 				</div>
 				
 				<div id="girlsSocksSizeDiv" style="display:none;">
-				   Girl's Socks Size*<br>
+				   <h4>Girl's Socks Size*</h4><br>
 					<select id="girlsSocksSize" name="girlsSocksSize">
 						<option value="" selected="selected"></option>
 						<option value="D01 -  Infant Girl Socks,  6 -12 months" >D01 -  Infant Girl Socks,  6 -12 months</option>
@@ -490,18 +495,18 @@
 				</div>
 				
 				<div id= "girlsSocksSpecialDiv" name = "girlsSocksSpecialDiv" style="display:none;">
-					Girl's Special Request (socks)* <input type="text" id="girlsSocksSpecial" name="girlsSocksSpecial" onkeyup=""><br><br>
+					<h4>Girl's Special Request (socks)* </h4><input type="text" id="girlsSocksSpecial" name="girlsSocksSpecial" onkeyup=""><br><br>
 				</div>
 				
 				<div id="girlsUODDiv" name="girlsUODDiv" style="display:inline;">
-					Select Underwear/Pull-up or Special Request Items - Girl*<br>
+					<h4>Select Underwear/Pull-up or Special Request Items - Girl*</h4><br>
 					<input id = "girlsUnderwear" onclick = "javascript:girlsUODSelect();" type="radio" name="girlsUOD" value=1>Girl's Underwear<br>
 					<input id = "girlsDiapers" onclick = "javascript:girlsUODSelect();" type="radio" name="girlsUOD" value=2>Girl's Diapers and Pullups<br>
 					<input id = "girlsUODS" onclick = "javascript:girlsUODSelect();" type="radio" name="girlsUOD" value=3>Girl's Special Request Item (underwear/diapers)<br><br>
 				</div>
 				
 				<div id="girlsUnderwearSizeDiv" style="display:none;">
-				   Girl's Underwear Size*<br>
+				   <h4>Girl's Underwear Size*</h4><br>
 					<select id="girlsUnderwearSize" name ="girlsUnderwearSize">
 						<option value="" selected="selected"></option>
 						<option value="E01 - Toddler Girl's Underwear, 2T/3T" >E01 - Toddler Girl's Underwear, 2T/3T</option>
@@ -524,7 +529,7 @@
 				</div>
 				
 				<div id="girlsDiaperSizeDiv" style="display:none;">
-				   Girl's Diaper/Pull-ups Size*<br>
+				   <h4>Girl's Diaper/Pull-ups Size*</h4><br>
 					<select id="girlsDiaperSize" name ="girlsDiaperSize">
 						<option value="" selected="selected"></option>
 						<option value="F01 - Size 1 diapers,  8-14 lbs" >F01 - Size 1 diapers,  8-14 lbs</option>
@@ -541,28 +546,28 @@
 				</div>
 				
 				<div id= "girlsUODSpecialDiv" name = "girlsUODSpecialDiv" style="display:none;">
-					Girl's Special Request (underwear/diapers)* <input type="text" id="girlsUODSpecial" name="girlsUODSpecial" onkeyup=""><br><br>
+					<h4>Girl's Special Request (underwear/diapers)*</h4> <input type="text" id="girlsUODSpecial" name="girlsUODSpecial" onkeyup=""><br><br>
 				</div>
             </div>
-            
+            </fieldset>
             <!-- BOYS CLOTHING HERE -->
-            
+            <fieldset id="boysclothing">
             <div id="boysOption" name="boysOption" style="display:none">
 				<div id="boysIOJDiv" name="boysIOJDiv" style="display:inline;">
-					Select Infant Outfit, or Jeans & Shirt - Boy*<br>
+					<h4>Select Infant Outfit, or Jeans & Shirt - Boy*</h4><br>
 					<input id = "boysIO" onclick = "boysIOJSelect()" type="radio" name="boysIOJ" value=1>Boy's Infant Outfit<br>
 					<input id = "boysJAS" onclick = "boysIOJSelect()" type="radio" name="boysIOJ" value=2>Boy's Jeans & Shirt<br><br>
 				</div>
 				
 				<div id="boysIOBigDiv" style="display:none">
 					<div id="boysIODiv" name="boysIODiv" style="display:inline;">
-						Select Infant Outfit, or Special Request Outfit*<br>
+						<h4>Select Infant Outfit, or Special Request Outfit*</h4><br>
 						<input id = "boysIO1" onclick = "javascript:boysIOSSelect();" type="radio" name="boysIO" value=1>Boy's Infant Outfit<br>
 						<input id = "boysIOS" onclick = "javascript:boysIOSSelect();" type="radio" name="boysIO" value=2>Special Request Boy's Infant Outfit<br><br>
 					</div>
 					
 					<div id="boysInfantSizeDiv" style="display:none;">
-						Boy's Infant Outfit Size*<br>
+						<h4>Boy's Infant Outfit Size*</h4><br>
 						<select id="boysInfantSize" name="boysInfantSize">
 							<option value="" selected="selected"></option>
 							<option value="G01 - Boy's Infant Outfit, newborn" >G01 - Boy's Infant Outfit, newborn</option>
@@ -577,19 +582,19 @@
 					</div>
 					
 					<div id= "boysIOSpecialDiv" name = "boysIOSpecialDiv" style="display:none;">
-						Boy's Special Request (infant outfit)* <input type="text" id="boysIOSpecial" name="boysIOSpecial" onkeyup=""><br><br>
+						<h4>Boy's Special Request (infant outfit)*</h4> <input type="text" id="boysIOSpecial" name="boysIOSpecial" onkeyup=""><br><br>
 					</div>
 				</div>
 				
 				<div id="boysJASDiv" style="display:none;">
 					<div id="boysJeansDiv" name="boysJeansDiv" style="display:inline;">
-						Select Jeans or Special Request Item - Boy*<br>
+						<h4>Select Jeans or Special Request Item - Boy*</h4><br>
 						<input id = "boysJeans" onclick = "javascript:boysJeansSelect();" type="radio" name="boysJeans" value=1>Boy's Jeans<br>
 						<input id = "boysJeansS" onclick = "javascript:boysJeansSelect();" type="radio" name="boysJeans" value=2>Boy's Special Request Item (Jeans)<br><br>
 					</div>
 					
 					<div id="boysJeansSizeDiv" style="display:none;">
-						Boy's Jeans Size*<br>
+						<h4>Boy's Jeans Size*</h4><br>
 						<select id="boysJeansSize" name="boysJeansSize">
 							<option value="" selected="selected"></option>
 							<option value="H01 - Toddler Boy's Jeans,  2T" >H01 - Toddler Boy's Jeans, 2T</option>
@@ -624,17 +629,17 @@
 					</div>
 					
 					<div id= "boysJeansSpecialDiv" name = "boysJeansSpecialDiv" style="display:none;">
-						Boy's Special Request (jeans)* <input type="text" id="boysJeansSpecial" name="boysJeansSpecial" onkeyup=""><br><br>
+						<h4>Boy's Special Request (jeans)* </h4><input type="text" id="boysJeansSpecial" name="boysJeansSpecial" onkeyup=""><br><br>
 					</div>
 					
 					<div id="boysShirtDiv" name="boysShirtDiv" style="display:inline;">
-						Select Shirt or Special Request Items - Boy*<br>
+						<h4>Select Shirt or Special Request Items - Boy*</h4><br>
 						<input id = "boysShirt" onclick = "javascript:boysShirtSelect();" type="radio" name="boysShirt" value=1>Boy's Shirt<br>
 						<input id = "boysShirtS" onclick = "javascript:boysShirtSelect();" type="radio" name="boysShirt" value=2>Boy's Special Request Item (shirt)<br><br>
 					</div>
 					
 					<div id="boysShirtSizeDiv" style="display:none;">
-					   Boy's Shirt Size*<br>
+					   <h4>Boy's Shirt Size*</h4><br>
 						<select id="boysShirtSize" name="boysShirtSize">
 							<option value="" selected="selected"></option>
 							<option value="J01 - Toddler Boy's Shirts, 2T" >J01 - Toddler Boy's Shirts, 2T</option>
@@ -657,18 +662,18 @@
 					</div>
 					
 					<div id= "boysShirtSpecialDiv" name = "boysShirtSpecialDiv" style="display:none;">
-						Boy's Special Request (shirt)* <input type="text" id="boysShirtSpecial" name="boysShirtSpecial" onkeyup=""><br><br>
+						<h4>Boy's Special Request (shirt)*</h4> <input type="text" id="boysShirtSpecial" name="boysShirtSpecial" onkeyup=""><br><br>
 					</div>
 				</div>
 				
 				<div id="boysSocksDiv" name="boysSocksDiv" style = "display:inline;">
-					Select Socks or Special Request Items - Boy*<br>
+					<h4>Select Socks or Special Request Items - Boy*</h4><br>
 					<input id = "boysSocks" onclick = "javascript:boysSocksSelect();" type="radio" name="boysSocks" value=1>Boy's Socks<br>
 					<input id = "boysSocksS" onclick = "javascript:boysSocksSelect();" type="radio" name="boysSocks" value=2>Boy's Special Request Item (socks)<br><br>
 				</div>
 				
 				<div id="boysSocksSizeDiv" style="display:none;">
-				   Boy's Socks Size*<br>
+				   <h4>Boy's Socks Size*</h4><br>
 					<select id="boysSocksSize" name="boysSocksSize">
 						<option value="" selected="selected"></option>
 						<option value="K01 -  Infant Boy Socks, 6-12 months" >K01 -  Infant Boy Socks, 6 -12 months</option>
@@ -685,18 +690,18 @@
 				</div>
 				
 				<div id= "boysSocksSpecialDiv" name = "boysSocksSpecialDiv" style="display:none;">
-					Boy's Special Request (socks)* <input type="text" id="boysSocksSpecial" name="boysSocksSpecial" onkeyup=""><br><br>
+					<h4>Boy's Special Request (socks)*</h4> <input type="text" id="boysSocksSpecial" name="boysSocksSpecial" onkeyup=""><br><br>
 				</div>
 				
 				<div id="boysUODDiv" name="boysUODDiv" style="display:inline;">
-					Select Underwear/Pull-up or Special Request Items - Boy*<br>
+					<h4>Select Underwear/Pull-up or Special Request Items - Boy*</h4><br>
 					<input id = "boysUnderwear" onclick = "javascript:boysUODSelect();" type="radio" name="boysUOD" value=1>Boy's Underwear<br>
 					<input id = "boysDiapers" onclick = "javascript:boysUODSelect();" type="radio" name="boysUOD" value=2>Boy's Diapers and Pullups<br>
 					<input id = "boysUODS" onclick = "javascript:boysUODSelect();" type="radio" name="boysUOD" value=3>Boy's Special Request Item (underwear/diapers)<br><br>
 				</div>
 				
 				<div id="boysUnderwearSizeDiv" style="display:none;">
-				   Boy's Underwear Size*<br>
+				   <h4>Boy's Underwear Size*</h4><br>
 					<select id="boysUnderwearSize" name ="boysUnderwearSize">
 						<option value="" selected="selected"></option>
 						<option value="L01 - Toddler Boy's Underwear,  2T/3T" >L01 - Toddler Boy's Underwear,  2T/3T</option>
@@ -715,7 +720,7 @@
 				</div>
 				
 				<div id="boysDiaperSizeDiv" style="display:none;">
-				   Boy's Diaper/Pull-ups Size*<br>
+				   <h4>Boy's Diaper/Pull-ups Size*</h4><br>
 					<select id="boysDiaperSize" name ="boysDiaperSize">
 						<option value="" selected="selected"></option>
 						<option value="F01 - Size 1 diapers, 8-14 lbs" >F01 - Size 1 diapers, 8-14 lbs</option>
@@ -732,15 +737,15 @@
 				</div>
 				
 				<div id= "boysUODSpecialDiv" name = "boysUODSpecialDiv" style="display:none;">
-					Boy's Special Request (underwear/diapers)* <input type="text" id="boysUODSpecial" name="boysUODSpecial" onkeyup=""><br><br>
+					<h4>Boy's Special Request (underwear/diapers)*</h4> <input type="text" id="boysUODSpecial" name="boysUODSpecial" onkeyup=""><br><br>
 				</div>
             </div>
-            
+            </fieldset>
             <!-- UNISEX CLOTHING HERE -->
-            
+            <fieldset id="unisex">
             <div id = "unknownOption" name = "unknownOption" style="display:none">
 				<div id="unisexIOSizeDiv">
-					Unisex Infant Outfit Size*<br>
+					<h4>Unisex Infant Outfit Size*</h4><br>
 					<select id="unisexIOSize" name="unisexIOSize">
 						<option value="" selected="selected">&nbsp;</option>
 						<option value="N01 - Unisex newborn" >N01 - Unisex newborn</option>
@@ -751,7 +756,7 @@
 				</div>
 				
 				<div id="unisexSocksSizeDiv">
-					Unisex Socks Size*<br>
+					<h4>Unisex Socks Size*</h4><br>
 					<select id="unisexSocksSize" name="unisexSocksSize">
 						<option value="" selected="selected">&nbsp;</option>
 						<option value="P01 - Unisex socks, 6 -12 months" >P01 - Unisex socks, 6 -12 months</option>
@@ -761,7 +766,7 @@
 				</div>
 				
 				<div id="unisexDiapersSizeDiv">
-					Unisex Diapers Size*<br>
+					<h4>Unisex Diapers Size*</h4><br>
 					<select id="unisexDiapersSize" name="unisexDiapersSize">
 						<option value="" selected="selected">&nbsp;</option>
 						<option value="F01 - Size 1 diapers, 8-14 lbs" >F01 - Size 1 diapers, 8-14 lbs</option>
@@ -771,15 +776,18 @@
 					</select><br><br>
 				</div>   
 			</div>
-            
+          </fieldset>
+		  </fieldset>
+		  <fieldset>
+		<legend>Follow-up Information</legend>
             <div id="otherChildDiv" name="otherChildDiv">
-            	Do you have information for another child?*<br>
+            	<h4>Do you have information for another child?*</h4><br>
             	<input type="radio" name="otherChild" value=1>Yes<br>
                 <input type="radio" name="otherChild" value=2>No<br><br>
             </div>
             
             <div id="notesDiv" name="notesDiv">
-           		Notes <input type="text" id="notes" name="notes" onkeyup=""><br><br>
+           		<h4>Notes</h4> <input type="text" id="notes" name="notes" onkeyup=""><br><br>
             </div>
             
             <div id="checklistDiv" name="checklistDiv">
@@ -793,10 +801,10 @@
             </div>
             
             <div id="initialsDiv" name="initialsDiv">
-           		Form Completed By <input type="text" id="initials" name="initials" onkeyup="javascript:highlightInitialsBoxIfNotValidated('initials');"><br><br>
+           		<h4>Form Completed By</h4> <input type="text" id="initials" name="initials" onkeyup="javascript:highlightInitialsBoxIfNotValidated('initials');"><br><br>
             </div>
-            
-            <input type="submit">
+          </fieldset>  
+            <p style="text-align: center;"><input type="submit"></p>
             
         </form>
     </body>

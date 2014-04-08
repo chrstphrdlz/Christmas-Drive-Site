@@ -267,18 +267,20 @@ function handleFamFields()
   </head>
    <body onload="initialize()">
       <form name="addressBar" action="inputAllInformation.php" method="POST" onsubmit="return false;">
+	  <fieldset>
+	  <legend>Residence Information</legend>
          <div id="residenceVerification" name="residenceVerification">
-            Residence Verification<br>
+            <h4>Residence Verification</h4><br>
             <input type="radio" name="residency" value="Yes">Yes<br>
-            <input type="radio" name="residency" value="No">No<br>
+            <input type="radio" name="residency" value="No">No<br><br>
          </div>
          <div id="householdStatusDiv" name="householdStatusDiv">
-            Type of Household<br>
+            <h4>Type of Household</h4><br>
             <select id = "householdStatus" name="householdStatus" onchange = "handleFamFields()">
                <option value=1>Single household</option>
                <!-- selected="selected" if value == correct value-->
                <option value=2>Combined household</option>
-            </select>
+            </select><br>
             <br>
          </div>
 		 
@@ -312,17 +314,19 @@ function handleFamFields()
 			Last Name <input type="text" id="lastName5" name="lastName5" onkeyup="highlightNameBoxIfNotValidated('lastName5')">
 			</li>
 		 </ul>
-         
+         </fieldset>
+		  <fieldset>
+	      <legend>Contact Information</legend>
          <div id="emailDiv" name="emailDiv">
-            Email <input type="text" id="email" name="email" onkeyup="highlightEmailBoxIfNotValidated('email')"><br>
+            <h4>Email</h4> <input type="text" id="email" name="email" onkeyup="highlightEmailBoxIfNotValidated('email')"><br>
          </div>
          <!--phone number stuff-->
          <div id="primaryPhoneNumDiv" name="primaryPhoneNumDiv">
-            Primary Phone Number:
+            <h4>Primary Phone Number:</h4>
             <input type="text" id="primaryPhoneNum" name="primaryPhoneNum"><br>
          </div>
          <div id="primaryPhoneDiv">
-            Primary Phone Type<br>
+            <h4>Primary Phone Type</h4><br>
             <input type="radio" name="primaryPhone" value=1>Home<br>
             <input type="radio" name="primaryPhone" value=2>Cell<br>
             <input type="radio" name="primaryPhone" value=3>Work<br>
@@ -331,12 +335,12 @@ function handleFamFields()
          </div>
          <!--other description box stuff-->
          <div id="secondaryPhoneNumDiv" name="secondaryPhoneNumDiv">
-            Secondary Phone Number:
+            <h4>Secondary Phone Number:</h4>
             <input type="text" name="secondaryPhoneNum">
          </div>
          <!--phone number stuff-->
          <div id="secondaryPhoneDiv" name="secondaryPhoneDiv">
-            Phone Type<br>
+            <h4>Phone Type</h4><br>
             <input type="radio" name="secondaryPhone" value=1>Home<br>
             <input type="radio" name="secondaryPhone" value=2>Cell<br>
             <input type="radio" name="secondaryPhone" value=3>Work<br>
@@ -346,10 +350,10 @@ function handleFamFields()
          <!--other description box stuff-->
          <!--Number of family members-->
          <div id="languagesSpokenDiv" name="languagesSpokenDiv">
-            Languages Spoken<br>
+            <h4>Languages Spoken</h4><br>
             <select id="languagesSpoken" name="languagesSpoken" onChange="addTextBoxIfUnselected(this)">
                <?php
-                  require_once 'globalClasses.php';
+                  require 'globalClasses.php';
                   $dba = new databaseAcessor();
                   $languages = $dba->getLanguages();
                   foreach($languages as $language)
@@ -373,18 +377,21 @@ function handleFamFields()
                <input type='text' id='otherLanguage' name='otherLanguage'><br>
             </div>
          </div>
+		 </fieldset>
+		 <fieldset>
+		 <legend>Church Information</legend>
          <div id="deleiveryDiv" name="deleiveryDiv">
-            Delivery (special request only)<br>
+            <h4>Delivery (special request only)</h4><br>
             <input type="radio" name="deleivery" value="Yes">Yes<br>
             <input type="radio" name="deleivery" value="No">No<br>
          </div>
          <div id="foodOrClothingDiv" name="foodOrClothingDiv">
-            Christmas Store selection<br>
+            <br><h4>Christmas Store selection</h4><br>
             <input type="radio" name="foodOrClothing" value="food">Food<br>
             <input type="radio" name="foodOrClothing" value="clothingAndToys">Clothing and Toys<br>
          </div>
          <div id="howDidYouKnowDiv" name="howDidYouKnowDiv">
-            How did you learn about the Stores?<br>
+          <br> <h4> How did you learn about the Stores?</h4><br>
             <select id="howDidYouKnow" name="howDidYouKnow">
                <option>Previous Customer</option>
                <option>Flyer</option>
@@ -394,21 +401,21 @@ function handleFamFields()
             </select>
             <br>
          </div>
-         <div id="canWeReachYouDiv" name="canWeReachYouDiv">
+         <br><div id="canWeReachYouDiv" name="canWeReachYouDiv">
             Can a member of the St. Margaret Mary Church and Community Organization call you after the holidays to talk more about the needs and concerns of you and your family?<br>
             <input type="radio" name="canWeReachYou" value="Yes">Yes<br>
             <input type="radio" name="canWeReachYou" value="No">No<br>
          </div>
          <div id="notesDiv" name="notesDiv">
-            Notes<br>
+            <br><h4>Notes</h4><br>
             <input type="text" id="notes" name="notes"><br>
          </div>
          
-         Number of Family Members<br>
+         <br><h4>Number of Family Members</h4><br>
          <input type="text" id="numberOfFamilyMembers" name="numberOfFamilyMembers"><br>
          
          <div id="addressChoiceDiv">
-            Type of Housing:<br>
+            <br><h4>Type of Housing:</h4><br>
             <select id="addressType" name="addressType" onChange="disselectAddress()">
                <option style="display: none;"></option>
                <option value="house">House</option>
@@ -454,9 +461,9 @@ function handleFamFields()
                       id="country"  name="country" disabled="true"></input></td>
                 </tr>
              </table>
-             <input type="button" value="submit" onclick="this.parentNode.parentNode.submit();">
          </div>
+		 </fieldset>
+		 		 <p style="text-align: center;"><input type="submit" value="submit" onclick="this.parentNode.parentNode.submit();"></p>
       </form>
-      <a href="login.php?status=loggedout">Log out</a>
    </body>
 </html>

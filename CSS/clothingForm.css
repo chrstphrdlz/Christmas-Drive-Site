@@ -1,5 +1,5 @@
-﻿
-.gradBackground {
+
+html {
 		background: #3fc8ff;
         /* Old browsers */
         background: -moz-linear-gradient(top, #3fc8ff 0%, #badae2 25%, #ffffff 100%); /* FF3.6+ */
@@ -8,6 +8,7 @@
 		background: -o-linear-gradient(top, #3fc8ff 0%,#badae2 25%,#ffffff 100%); /* Opera 11.10+ */
 		background: -ms-linear-gradient(top, #3fc8ff 0%,#badae2 25%,#ffffff 100%); /* IE10+ */
         /* W3C */
+        border: thick #000000 ridge;
 		background: linear-gradient(to bottom,  #3fc8ff 0%,#badae2 25%,#ffffff 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3fc8ff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
 		padding: 50px;
@@ -22,83 +23,16 @@
     padding: 80px; 
 }
 
-
-.round_border
-{
-	border-radius:6px;
-	-moz-border-radius:6px; /* Firefox 3.6 and earlier */
-	-webkit-border-radius:6px; /* Safari */
+#boysclothing{
+border: hidden;
 }
 
-.bodySettings{
-	background-color:#D8FFFF;
+#girlsclothing{
+border: hidden;
 }
 
-#myCanvas{
-    border:2px solid #FF0000; 
-    background-color: pink;
-    
-}
-
-.myDiv{
-    float:left;
-    margin: 5px;
-}
-
-.header{
-    background-color:#66CCFF;
-    text-align:center;
-    border-radius: 1em;
-    border-style:double;
-}
-
-.myTable{
-    
-    border-collapse: collapse;
-    border-spacing: 0;
-
-}
-
-.myTable td
-{
-    border: 1px solid #66CCFF;
-    margin:-1;
-}
-
-form label { 
-	display: block;  /* block float the labels to left column, set a width */
-	float: left; 
-	width: 150px; 
-	padding: 0; 
-	margin: 5px 0 0; /* set top margin same as form input - textarea etc. elements */
-	text-align: right; 
-}
-form {  
-  /* set width in form, not fieldset (still takes up more room w/ fieldset width */
-  font:100% verdana,arial,sans-serif;
-  margin: 0 auto;
-  padding: 0;
-  min-width: 500px;
-  max-width: 600px;
-  width: 560px; 
-}
-
-form fieldset {
-  /* clear: both; note that this clear causes inputs to break to left in ie5.x mac, commented out */
-  border-color: #000;
-  border-width: 1px;
-  border-style: solid;
-  padding: 10px;        /* padding in fieldset support spotty in IE */
-  margin: 0;
-  background-color: white;
-}
-
-form legend {
-	font-size: 1.875em;
-	font-style: normal;
-	font-variant: small-caps;
-	font-weight: bold;
-	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+#unisex{
+border: hidden;
 }
 
 [type="submit"] {
@@ -124,6 +58,37 @@ form legend {
 	box-shadow : 0px 0px 5px rgba(0,0,0,1.0);
 	}
 	
+form legend {
+	font-size: 1.875em;
+	font-style: normal;
+	font-variant: small-caps;
+	font-weight: bold;
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+form {  
+  /* set width in form, not fieldset (still takes up more room w/ fieldset width */
+  font:100% verdana,arial,sans-serif;
+  margin: 0 auto;
+  padding: 0;
+  min-width: 500px;
+  max-width: 600px;
+  width: 560px; 
+}
+
+form label{
+   display: inline;
+    float: left;
+    clear: left;
+    width: 500px;
+    text-align: middle;
+	margin-bottom: 10px;
+}
+
+form fieldset {
+background-color: white;
+}
+
 h4 {
 	margin: 0 0 0 0;
 	padding:0;
