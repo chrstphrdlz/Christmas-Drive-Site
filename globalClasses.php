@@ -1,5 +1,5 @@
 <?php
-
+	require 'constants.php';
     class databaseAcessor
     {
         private $username = "root";
@@ -19,7 +19,7 @@
         private $addClothingOrderString = "INSERT INTO ClothingOrders (orderedById, orderedForId, gender, infantOutfitSize, infantOutfitSpecial, jeansSize, jeansSpecial, shirtSize, shirtSpecial, socksSize, socksSpecial, underwearSize, diaperSize, uodSpecial, uniIO, uniSocks, uniDiapers, notes, checklist, completedBy) VALUES (?, ?, ? ,? ,? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         private $addPhoneType = "INSERT INTO PhoneType (description) VALUES (?)";
         private $addChristmasFoodOrderString = "INSERT INTO ChristmasFoodOrder (aid, needDelievery) VALUES (?, ?)";
-		private $addThanksGivingFoodOrderString = "INSERT INTO ThanksgivingFoodOrder (aid, needDelievery) VALUES (?, ?, ?)";
+		private $addThanksGivingFoodOrderString = "INSERT INTO ThanksgivingFoodOrder (aid, needDelievery) VALUES (?, ?)";
         private $getAllClothingOrdersInAddress = "SELECT co.coid FROM ClothingOrders co, peopleInHouse pih WHERE co.orderedById = pih.pid AND pih.aid = (?)";
         private $getNumberOfPeopleInFoodOrder = "SELECT ad.numPeopleInHouse FROM Addresses ad, ChristmasFoodOrder fo WHERE fo.aid = (?) AND ad.aid = fo.aid";
         private $getClothingOrderForPerson = "SELECT co.coid FROM ClothingOrders co WHERE co.orderedById = (?)";
@@ -291,9 +291,9 @@
             $this->makeStatementInsert($this->addChristmasFoodOrderString, array($addressKey, $needDelivery));
         }
 		
-		public function addThanksgivingFoodOrder($addressKey, $numPeople, $needDelivery)
+		public function addThanksgivingFoodOrder($addressKey, $needDelivery)
         {
-            $this->makeStatementInsert($this->addThanksGivingFoodOrderString, array($addressKey, $numPeople, $needDelivery));
+            $this->makeStatementInsert($this->addThanksGivingFoodOrderString, array($addressKey, $needDelivery));
         }
         
         public function getClothingOrderForPerson($personId)
@@ -371,6 +371,74 @@
 			$result = $this->makeStatementInsert($stmt, $params);
 
 			return $result;
+		}
+		
+		public function getAllClothingOrders() {
+			$stmt = "SELECT * FROM Clothingorders;";
+			$result = $this->makeStatementSelect($stmt);
+			return $result;
+		}
+		
+		public function getHeadsOfHouseHold() {
+			$stmt = "SELECT * FROM PersonOrdering P, HeadOfHousehold H WHERE P.id = H.pid;";
+			$result = $this->makeStatementSelect($stmt);
+			return $result;
+		}
+		
+		public function getAddressByHead($h) {
+			$stmt = "SELECT hid FROM HeadOfHouseHold H, Addresses A WHERE H.pid = ?;";
+			$houseId = $this->makeStatementSelect($stmt, array($h->id));
+			$stmt = "SELECT * FROM Addresses A WHERE A.aid = ?;";
+			$result = $this->makeStatementSelect($stmt, array($houseId[0]->hid));
+			return $result[0];
+		
+		}
+		
+		public function getHeadOfHouseholdByPersonId($id) {
+			
+		}
+		
+		public function getPersonById($id) {
+			$stmt = "SELECT * FROM PersonOrdering P WHERE P.id = ?;";
+			$result = $this->makeStatementSelect($stmt, array($id));
+			return $result[0];
+		}
+		
+		public function getHeadOfHouseHoldById($id) {
+			$stmt = "SELECT * FROM HeadOfHousehold H WHERE H.pid = ?;";
+			$result = $this->makeStatementSelect($stmt, array($id));
+			return $result[0];
+		}
+		
+		public function getChildById($id) {
+			$stmt = "SELECT * FROM Children C WHERE C.cid = ?;";
+			$result = $this->makeStatementSelect($stmt, array($id));
+			return $result[0];
+		}
+		
+		public function getClothingOrderById($id) {
+			$stmt = "SELECT * FROM ClothingOrders CO WHERE CO.coid = ?;";
+			$result = $this->makeStatementSelect($stmt, array($id));
+			return $result[0];
+		}
+		
+		public function getAddressById($id) {
+			$stmt = "SELECT * FROM Addresses A WHERE A.aid = ?;";
+			$result = $this->makeStatementSelect($stmt, array($id));
+			return $result[0];
+		}
+		
+		public function getPeopleByAddressId($id) {
+			$stmt = "SELECT * FROM peopleInHouse PH, PersonOrdering P WHERE PH.pid = P.id? AND PH.aid = ;";
+			$result = $this->makeStatementSelect($stmt, array($id));
+			return $result;
+		
+		}
+		
+		public function getAddressId($num, $steet, $city, $zip) {
+			$stmt = "SELECT aid FROM Addresses A WHERE A.houseNumber = ? AND A.streetName = $street AND A.city = ? AND A.zipCode = ? ;";
+			$result = $this->makeStatementSelect($stmt, array($num, $steet, $city, $zip));
+			return $result[0]->id;
 		}
     }
 ?>
