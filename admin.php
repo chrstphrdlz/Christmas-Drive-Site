@@ -20,6 +20,7 @@ $membership->confirm_member();
 	<div>
 		<h3>Congradulations! You have successfully logged-in to the Admin page.</h3>
 		<a href="login.php?status=loggedout">Log out</a>
+		<a href="christmasDriveForm.php">Continue</a>
 	</div>
 </body>
 </html>

@@ -457,5 +457,6 @@ function handleFamFields()
              <input type="button" value="submit" onclick="this.parentNode.parentNode.submit();">
          </div>
       </form>
+      <a href="login.php?status=loggedout">Log out</a>
    </body>
 </html>
