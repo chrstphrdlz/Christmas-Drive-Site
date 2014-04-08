@@ -43,7 +43,7 @@
             
             
             //add person
-            $arrayOfValues = array($firstName, $lastName, $email, $primaryPhoneId, $primaryPhoneNum, $secondaryPhoneId, $secondaryPhoneNum, $languageId, $notes);
+            $arrayOfValues = array($firstName, $lastName, $email, $primaryPhoneId, $primaryPhoneNum, $secondaryPhoneId, $secondaryPhoneNum, $languageId, $delivery, $notes);
             if(!$languageId)
             {
                 echo "Failed to add language";
@@ -67,7 +67,7 @@
 			$i = 0;
 			foreach($families as $fam) {
 				if( !empty($fam['firstname']) ) {
-					$person = array($fam['firstname'], $fam['firstname'], "", 1, "", 1, $secondaryPhoneNum, "", $notes);
+					$person = array($fam['firstname'], $fam['lastname'], "", 1, "", 1, "", 1, "", $notes);
 					$tempID = $dba->addPerson($person);
 					$something = $dba->addPersonToHouse($tempID,$addressKey);
 					array_push($famIds, $personId);

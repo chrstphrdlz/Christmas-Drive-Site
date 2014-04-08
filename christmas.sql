@@ -40,7 +40,7 @@ CREATE TABLE PersonOrdering
     
     languageId INT NOT NULL DEFAULT 1,
     
-    delivery VARCHAR(3) DEFAULT "No";
+    delivery VARCHAR(3) DEFAULT "No",
     
     notes VARCHAR(30) NOT NULL DEFAULT "",
     
