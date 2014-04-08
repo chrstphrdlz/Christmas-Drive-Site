@@ -4,6 +4,7 @@ require 'globalClasses.php';
 
 Class Membership {
 
+	//Validate user for log-in
 	function validate_user($username, $pwd) {
 	
 		$mysql = new databaseAcessor();
@@ -21,7 +22,7 @@ Class Membership {
 		//if users credentials were successfully validated
 		if( !empty($ensure_credentials) ) {
 			$_SESSION['status'] = 'authorized';		//set session status to authorized
-			$_SESSION['type'] = $role['role'];
+			$_SESSION['type'] = $role->role;
 			
 			if( $_SESSION['type'] === 'ADMIN') {
 				header("location: admin.php");			//set this to location we want to take user
@@ -41,7 +42,12 @@ Class Membership {
 		$mysql = new databaseAcessor();
 		
 		//make sure username, email, and access code are correct
-		$response = $mysql->validate_new_user($user_info['username'], $user_info['email'], $user_info['access_code']);
+		$errors = $mysql->validate_new_user($user_info['username'], $user_info['email'], $user_info['access_code']);
+		
+		//if username, email and access code are NOT correct return the errors
+		if( !empty($errors) ) {
+			return $errors;
+		}
 		
 		//set appropriate user type
 		$role = $user_info['access_code'];
@@ -61,16 +67,14 @@ Class Membership {
 
 		$user = array( $firstName, $lastName, $initials, $email, $username, $password, $role );
 		
-		
-		
 		//if username, email and access code are correct insert user into DB and return true
-		if( $response == true ) {
-			$response = $mysql->insert_user($user);
+		$response = $mysql->insert_user($user);
+		
+		if( $response == true) {
 			return true;
 		} else {
-			//otherwise return an array of errors now held in $response
-			return $response;
-		}		
+			echo "failed to insert";
+		}
 		
 	}
 	
@@ -91,10 +95,11 @@ Class Membership {
 	//function that confirms that a user has already logged in
 	function confirm_member() {
 		session_start();
-		
 		//if the users session status is not set to authorized redirect the user to the login page
 		if($_SESSION['status'] != 'authorized') {
+		    echo "not authorized";
 			header("location: login.php");
 		}
 	}
 }
+?>

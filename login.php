@@ -1,5 +1,4 @@
 <?php
-
 session_start();							//create a session
 require_once 'membership.php';		        //indicate required files
 $membership = new Membership();				//create new Membership object
@@ -14,6 +13,7 @@ if( isset($_GET['status']) && $_GET['status'] == 'loggedout') {
 if( $_POST && !empty($_POST['username']) && !empty($_POST['pwd']) ) {
 	//validate users credentials against DB and if successful login and set session
 	$response = $membership->validate_user($_POST['username'], $_POST['pwd']);
+	header("location: login.php");
 }
 ?>
 

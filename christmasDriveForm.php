@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
   <?php
-        session_unset();
+        require 'membership.php';
+        $membership = new Membership();
+        $membership->confirm_member();
+        session_start();
+        //unsetting everyting not in membership class
+        $status = $_SESSION['status'];
+		$type = $_SESSION['type'];
+		
+		session_unset();
+		$_SESSION['status'] = $status;
+		$_SESSION['type'] = $type;
+        //confirm that user has logged in before displaying page(if they have not redirect to login page)
+        
   ?>
   <head>
     <link rel="stylesheet" type="text/css" href="CSS/ChristmasDriveForm.css">
@@ -337,7 +349,7 @@ function handleFamFields()
             Languages Spoken<br>
             <select id="languagesSpoken" name="languagesSpoken" onChange="addTextBoxIfUnselected(this)">
                <?php
-                  require 'globalClasses.php';
+                  require_once 'globalClasses.php';
                   $dba = new databaseAcessor();
                   $languages = $dba->getLanguages();
                   foreach($languages as $language)
