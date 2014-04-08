@@ -45,8 +45,8 @@ Class Membership {
 		$errors = $mysql->validate_new_user($user_info['username'], $user_info['email'], $user_info['access_code']);
 		
 		//if username, email and access code are NOT correct return the errors
-		if( !empty($errors) ) {
-			return $errors;
+		if( !$errors ) {
+			return false;
 		}
 		
 		//set appropriate user type
