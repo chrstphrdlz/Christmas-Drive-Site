@@ -54,6 +54,7 @@ function initialize() {
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
     fillInAddress();
   });
+  window.onload = disselectAddress();
 }
 
 // [START region_fillform]
@@ -189,7 +190,7 @@ function disselectAddress()
     var elementOfAddressSelect = document.getElementById("addressSearchContainer");
     var apartmentInfoDiv = document.getElementById("apartmentAndBuildingNumber");
     
-    if(document.getElementById("addressType").value == "house")
+    if((document.getElementById("addressType").value == "house" ))
 	{
 		elementOfAddressSelect.style.display = "inline";
 		apartmentInfoDiv.style.display = "none";
@@ -272,7 +273,7 @@ function handleFamFields()
          <div id="residenceVerification" name="residenceVerification">
             <h4>Residence Verification</h4><br>
             <input type="radio" name="residency" value="Yes">Yes<br>
-            <input type="radio" name="residency" value="No">No<br><br>
+            <input type="radio" name="residency" value="No" checked>No<br><br>
          </div>
          <div id="householdStatusDiv" name="householdStatusDiv">
             <h4>Type of Household</h4><br>
@@ -327,7 +328,7 @@ function handleFamFields()
          </div>
          <div id="primaryPhoneDiv">
             <h4>Primary Phone Type</h4><br>
-            <input type="radio" name="primaryPhone" value=1>Home<br>
+            <input type="radio" name="primaryPhone" value=1 checked>Home<br>
             <input type="radio" name="primaryPhone" value=2>Cell<br>
             <input type="radio" name="primaryPhone" value=3>Work<br>
             <input type="radio" name="primaryPhone" value=4>Other:<br>
@@ -378,16 +379,16 @@ function handleFamFields()
             </div>
          </div>
 		 </fieldset>
-		 <fieldset>
+		 <fieldset onload="disselectAddress()">
 		 <legend>Church Information</legend>
          <div id="deleiveryDiv" name="deleiveryDiv">
             <h4>Delivery (special request only)</h4><br>
             <input type="radio" name="deleivery" value="Yes">Yes<br>
-            <input type="radio" name="deleivery" value="No">No<br>
+            <input type="radio" name="deleivery" value="No" checked>No<br>
          </div>
          <div id="foodOrClothingDiv" name="foodOrClothingDiv">
             <br><h4>Christmas Store selection</h4><br>
-            <input type="radio" name="foodOrClothing" value="food">Food<br>
+            <input type="radio" name="foodOrClothing" value="food" checked>Food<br>
             <input type="radio" name="foodOrClothing" value="clothingAndToys">Clothing and Toys<br>
          </div>
          <div id="howDidYouKnowDiv" name="howDidYouKnowDiv">
@@ -404,21 +405,21 @@ function handleFamFields()
          <br><div id="canWeReachYouDiv" name="canWeReachYouDiv">
             Can a member of the St. Margaret Mary Church and Community Organization call you after the holidays to talk more about the needs and concerns of you and your family?<br>
             <input type="radio" name="canWeReachYou" value="Yes">Yes<br>
-            <input type="radio" name="canWeReachYou" value="No">No<br>
+            <input type="radio" name="canWeReachYou" value="No" checked>No<br>
          </div>
          <div id="notesDiv" name="notesDiv">
             <br><h4>Notes</h4><br>
-            <input type="text" id="notes" name="notes"><br>
+            <input type="text" id="notes" name="notes" placeholder="None..."><br>
          </div>
          
          <br><h4>Number of Family Members</h4><br>
-         <input type="text" id="numberOfFamilyMembers" name="numberOfFamilyMembers"><br>
+         <input type="text" id="numberOfFamilyMembers" name="numberOfFamilyMembers" value="1"><br>
          
          <div id="addressChoiceDiv">
             <br><h4>Type of Housing:</h4><br>
-            <select id="addressType" name="addressType" onChange="disselectAddress()">
+            <select id="addressType" name="addressType" onChange="disselectAddress()" >
                <option style="display: none;"></option>
-               <option value="house">House</option>
+               <option value="house" selected="selected">House</option>
                <option value="apartment">Apartment</option>
             </select>
          </div>
