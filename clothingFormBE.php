@@ -25,6 +25,11 @@
                 $childIDNo = $_POST["childIDNoS"];
             }
             
+            if($age == 13)
+            {
+                $age = 0;
+            }
+            
             $childArray = array($firstName, $lastName, $parentFirst, $parentLast, $age, $childID, $childIDNo, $personOrderingID);
             
             $childOrderingID = $dba->addChild($childArray);

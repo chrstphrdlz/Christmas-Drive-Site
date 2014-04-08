@@ -8,6 +8,7 @@
             $lastName = $_POST["lastName"];
             $email = $_POST["email"];
             $primaryPhoneId = $_POST["primaryPhone"];
+            $delivery = $_POST["deleivery"];
             
             //will add new id if there is a new phone type (not publically displayed for privacy reasone)
             if($primaryPhoneId == 4)

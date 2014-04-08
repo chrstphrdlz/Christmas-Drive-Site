@@ -6,7 +6,7 @@
         private $password = "password";
         private $dbName = "Christmas";
         private $nameQueryString = "SELECT * FROM PersonOrdering p WHERE p.lastName LIKE ?";
-        private $addFullPersonString = "INSERT INTO PersonOrdering (firstName, lastName, email, primaryPhoneId, primaryPhoneNum, secondaryPhoneId, secondaryPhoneNum, languageId, notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+        private $addFullPersonString = "INSERT INTO PersonOrdering (firstName, lastName, email, primaryPhoneId, primaryPhoneNum, secondaryPhoneId, secondaryPhoneNum, languageId, delivery, notes) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
         private $addLanguageString = "INSERT INTO Language (languageName) VALUES (?);";
         private $languageQueryString = "SELECT * FROM Language  ORDER BY languageName";
         private $addressAddingString = "INSERT IGNORE INTO Addresses (houseNumber, streetName, city, zipCode, numPeopleInHouse) VALUES (?, ?, ?, ?, ?)";

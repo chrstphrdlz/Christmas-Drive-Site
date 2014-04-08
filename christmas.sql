@@ -40,6 +40,8 @@ CREATE TABLE PersonOrdering
     
     languageId INT NOT NULL DEFAULT 1,
     
+    delivery VARCHAR(3) DEFAULT "No";
+    
     notes VARCHAR(30) NOT NULL DEFAULT "",
     
     #add if we want a food or clothing order
@@ -54,7 +56,6 @@ CREATE INDEX part_of_name ON PersonOrdering (lastName(20));
 
 #Will insert a default person to just add addresses without having a  head of household
 INSERT INTO PersonOrdering (firstName, lastName, email) VALUES ("No", "Name", "ddd");
-INSERT INTO PersonOrdering (firstName, lastName, email) VALUES ("Other", "Name", "ff");
 
 #Not sure if primaryGaurdianId should not be added for flexibility by admins, will have today as birthday by default
 CREATE TABLE Children
