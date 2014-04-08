@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="gradBackground">
   <?php
         require 'membership.php';
         $membership = new Membership();
@@ -353,7 +353,7 @@ function handleFamFields()
             <h4>Languages Spoken</h4><br>
             <select id="languagesSpoken" name="languagesSpoken" onChange="addTextBoxIfUnselected(this)">
                <?php
-                  require 'globalClasses.php';
+                  require_once 'globalClasses.php';
                   $dba = new databaseAcessor();
                   $languages = $dba->getLanguages();
                   foreach($languages as $language)
@@ -368,7 +368,7 @@ function handleFamFields()
                       echo "</option>";
                   }
                   
-                  ?>
+                 ?>
                <!--need to add way to add another language-->
                <option value="other">Other</option>
             </select>
